@@ -1,0 +1,1202 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>gitlab.GitLab</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="gitlab-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/alexvh/python-gitlab3">python-gitlab3</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="gitlab-module.html">Package&nbsp;gitlab</a> ::
+        Class&nbsp;GitLab
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="gitlab.GitLab-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class GitLab</h1><p class="nomargin-top"></p>
+<p>A GitLab API connection.</p>
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="gitlab.GitLab.CurrentUser-class.html" class="summary-name">CurrentUser</a><br />
+      The currently authenticated user.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="gitlab.GitLab.Issue-class.html" class="summary-name">Issue</a><br />
+      An issue.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="gitlab.GitLab.Group-class.html" class="summary-name">Group</a><br />
+      A project group.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="gitlab.GitLab.SystemHook-class.html" class="summary-name">SystemHook</a><br />
+      A system hook.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="gitlab.GitLab.Project-class.html" class="summary-name">Project</a><br />
+      A project.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="gitlab.GitLab.User-class.html" class="summary-name">User</a><br />
+      A GitLab user.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="gitlab.GitLab.Team-class.html" class="summary-name">Team</a><br />
+      A team of users.
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_current_user"></a><span class="summary-sig-name">get_current_user</span>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the CurrentUser specified by the given <i>id</i></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#issues" class="summary-sig-name">issues</a>(<span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a list of GitLab issues.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#find_issue" class="summary-sig-name">find_issue</a>(<span class="summary-sig-arg">find_all</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">cached</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Find the first matching Issue whose properties match all of the key, 
+      value pairs given in the arguments.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#groups" class="summary-sig-name">groups</a>(<span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a list of GitLab groups.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#find_group" class="summary-sig-name">find_group</a>(<span class="summary-sig-arg">find_all</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">cached</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Find the first matching Group whose properties match all of the key, 
+      value pairs given in the arguments.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_group"></a><span class="summary-sig-name">get_group</span>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the Group specified by the given <i>id</i></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#add_group" class="summary-sig-name">add_group</a>(<span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">path</span>)</span><br />
+      Add a new group to GitLab</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#system_hooks" class="summary-sig-name">system_hooks</a>(<span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a list of GitLab system_hooks.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#find_system_hook" class="summary-sig-name">find_system_hook</a>(<span class="summary-sig-arg">find_all</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">cached</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Find the first matching SystemHook whose properties match all of the 
+      key, value pairs given in the arguments.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#add_system_hook" class="summary-sig-name">add_system_hook</a>(<span class="summary-sig-arg">url</span>)</span><br />
+      Add a new system_hook to GitLab</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="delete_system_hook"></a><span class="summary-sig-name">delete_system_hook</span>(<span class="summary-sig-arg">system_hook</span>)</span><br />
+      Equivalent to <i>system_hook</i>.delete()</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#projects" class="summary-sig-name">projects</a>(<span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a list of GitLab projects.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#find_project" class="summary-sig-name">find_project</a>(<span class="summary-sig-arg">find_all</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">cached</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Find the first matching Project whose properties match all of the 
+      key, value pairs given in the arguments.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_project"></a><span class="summary-sig-name">get_project</span>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the Project specified by the given <i>id</i></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#add_project" class="summary-sig-name">add_project</a>(<span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">description</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">default_branch</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">issues_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">wall_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">merge_requests_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">wiki_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">snippets_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">public</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Add a new project to GitLab</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#users" class="summary-sig-name">users</a>(<span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a list of GitLab users.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#find_user" class="summary-sig-name">find_user</a>(<span class="summary-sig-arg">find_all</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">cached</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Find the first matching User whose properties match all of the key, 
+      value pairs given in the arguments.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_user"></a><span class="summary-sig-name">get_user</span>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the User specified by the given <i>id</i></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#add_user" class="summary-sig-name">add_user</a>(<span class="summary-sig-arg">email</span>,
+        <span class="summary-sig-arg">password</span>,
+        <span class="summary-sig-arg">username</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">skype</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">linkedin</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">twitter</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">projects_limit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">extern_uid</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">provider</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">bio</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Add a new user to GitLab</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="update_user"></a><span class="summary-sig-name">update_user</span>(<span class="summary-sig-arg">user</span>)</span><br />
+      Equivalent to <i>user</i>.save()</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="delete_user"></a><span class="summary-sig-name">delete_user</span>(<span class="summary-sig-arg">user</span>)</span><br />
+      Equivalent to <i>user</i>.delete()</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#teams" class="summary-sig-name">teams</a>(<span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a list of GitLab teams.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#find_team" class="summary-sig-name">find_team</a>(<span class="summary-sig-arg">find_all</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">cached</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Find the first matching Team whose properties match all of the key, 
+      value pairs given in the arguments.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_team"></a><span class="summary-sig-name">get_team</span>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the Team specified by the given <i>id</i></td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#add_team" class="summary-sig-name">add_team</a>(<span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">path</span>)</span><br />
+      Add a new team to GitLab</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="add_project_for_user"></a><span class="summary-sig-name">add_project_for_user</span>(<span class="summary-sig-arg">user_id</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">description</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">default_branch</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">issues_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">wall_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">merge_requests_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">wiki_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">snippets_enabled</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">public</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Add a project owned by the given user.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab.GitLab-class.html#login" class="summary-sig-name">login</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">login_or_email</span>,
+        <span class="summary-sig-arg">password</span>)</span><br />
+      Log in to GitLab.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="issues"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">issues</span>(<span class="sig-arg">limit</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">page</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">per_page</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a list of GitLab issues.</p>
+  <p><i>limit</i> can be given to specify the maximum list size.</p>
+  <p><i>page</i> and <i>per_page</i> can be used for pagination.</p>
+  <p><i>limit</i> should not be specified with either <i>page</i> or 
+  <i>per_page</i>. If it is, <i>limit</i> takes precedence.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="find_issue"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">find_issue</span>(<span class="sig-arg">find_all</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">cached</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Find the first matching Issue whose properties match all of the key, 
+  value pairs given in the arguments.</p>
+  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
+  type.plural_name of &lt;class 'gitlab3._api_definition.Issue'&gt;&gt; 
+  will be returned. If a <i>cached</i> list is not given, the list to 
+  search will be queried from the server each time this is called.</p>
+  <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="groups"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">groups</span>(<span class="sig-arg">limit</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">page</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">per_page</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a list of GitLab groups.</p>
+  <p><i>limit</i> can be given to specify the maximum list size.</p>
+  <p><i>page</i> and <i>per_page</i> can be used for pagination.</p>
+  <p><i>limit</i> should not be specified with either <i>page</i> or 
+  <i>per_page</i>. If it is, <i>limit</i> takes precedence.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="find_group"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">find_group</span>(<span class="sig-arg">find_all</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">cached</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Find the first matching Group whose properties match all of the key, 
+  value pairs given in the arguments.</p>
+  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
+  type.plural_name of &lt;class 'gitlab3._api_definition.Group'&gt;&gt; 
+  will be returned. If a <i>cached</i> list is not given, the list to 
+  search will be queried from the server each time this is called.</p>
+  <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_group"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_group</span>(<span class="sig-arg">name</span>,
+        <span class="sig-arg">path</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a new group to GitLab</p>
+  <p>On success, the newly created object is returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="system_hooks"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">system_hooks</span>(<span class="sig-arg">limit</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">page</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">per_page</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a list of GitLab system_hooks.</p>
+  <p><i>limit</i> can be given to specify the maximum list size.</p>
+  <p><i>page</i> and <i>per_page</i> can be used for pagination.</p>
+  <p><i>limit</i> should not be specified with either <i>page</i> or 
+  <i>per_page</i>. If it is, <i>limit</i> takes precedence.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="find_system_hook"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">find_system_hook</span>(<span class="sig-arg">find_all</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">cached</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Find the first matching SystemHook whose properties match all of the 
+  key, value pairs given in the arguments.</p>
+  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
+  type.plural_name of &lt;class 
+  'gitlab3._api_definition.SystemHook'&gt;&gt; will be returned. If a 
+  <i>cached</i> list is not given, the list to search will be queried from 
+  the server each time this is called.</p>
+  <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_system_hook"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_system_hook</span>(<span class="sig-arg">url</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a new system_hook to GitLab</p>
+  <p>On success, the newly created object is returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="projects"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">projects</span>(<span class="sig-arg">limit</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">page</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">per_page</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a list of GitLab projects.</p>
+  <p><i>limit</i> can be given to specify the maximum list size.</p>
+  <p><i>page</i> and <i>per_page</i> can be used for pagination.</p>
+  <p><i>limit</i> should not be specified with either <i>page</i> or 
+  <i>per_page</i>. If it is, <i>limit</i> takes precedence.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="find_project"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">find_project</span>(<span class="sig-arg">find_all</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">cached</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Find the first matching Project whose properties match all of the key,
+  value pairs given in the arguments.</p>
+  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
+  type.plural_name of &lt;class 'gitlab3._api_definition.Project'&gt;&gt; 
+  will be returned. If a <i>cached</i> list is not given, the list to 
+  search will be queried from the server each time this is called.</p>
+  <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_project"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_project</span>(<span class="sig-arg">name</span>,
+        <span class="sig-arg">description</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">default_branch</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">issues_enabled</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">wall_enabled</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">merge_requests_enabled</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">wiki_enabled</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">snippets_enabled</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">public</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a new project to GitLab</p>
+  <p>On success, the newly created object is returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="users"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">users</span>(<span class="sig-arg">limit</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">page</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">per_page</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a list of GitLab users.</p>
+  <p><i>limit</i> can be given to specify the maximum list size.</p>
+  <p><i>page</i> and <i>per_page</i> can be used for pagination.</p>
+  <p><i>limit</i> should not be specified with either <i>page</i> or 
+  <i>per_page</i>. If it is, <i>limit</i> takes precedence.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="find_user"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">find_user</span>(<span class="sig-arg">find_all</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">cached</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Find the first matching User whose properties match all of the key, 
+  value pairs given in the arguments.</p>
+  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
+  type.plural_name of &lt;class 'gitlab3._api_definition.User'&gt;&gt; will
+  be returned. If a <i>cached</i> list is not given, the list to search 
+  will be queried from the server each time this is called.</p>
+  <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_user"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_user</span>(<span class="sig-arg">email</span>,
+        <span class="sig-arg">password</span>,
+        <span class="sig-arg">username</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">skype</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">linkedin</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">twitter</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">projects_limit</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">extern_uid</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">provider</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">bio</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a new user to GitLab</p>
+  <p>On success, the newly created object is returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="teams"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">teams</span>(<span class="sig-arg">limit</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">page</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">per_page</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a list of GitLab teams.</p>
+  <p><i>limit</i> can be given to specify the maximum list size.</p>
+  <p><i>page</i> and <i>per_page</i> can be used for pagination.</p>
+  <p><i>limit</i> should not be specified with either <i>page</i> or 
+  <i>per_page</i>. If it is, <i>limit</i> takes precedence.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="find_team"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">find_team</span>(<span class="sig-arg">find_all</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">cached</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Find the first matching Team whose properties match all of the key, 
+  value pairs given in the arguments.</p>
+  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
+  type.plural_name of &lt;class 'gitlab3._api_definition.Team'&gt;&gt; will
+  be returned. If a <i>cached</i> list is not given, the list to search 
+  will be queried from the server each time this is called.</p>
+  <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_team"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_team</span>(<span class="sig-arg">name</span>,
+        <span class="sig-arg">path</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a new team to GitLab</p>
+  <p>On success, the newly created object is returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="login"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">login</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">login_or_email</span>,
+        <span class="sig-arg">password</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Log in to GitLab. This is unnecessary if a token was given when 
+  creating this GitLab object.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="gitlab-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/alexvh/python-gitlab3">python-gitlab3</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Aug 22 23:50:00 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
