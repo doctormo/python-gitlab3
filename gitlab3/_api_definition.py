@@ -27,10 +27,10 @@ def uncamel(name):
 class APIDefinition(object):
     url = ''
     actions = []
-    extra_actions = {}
+    extra_actions = []
     required_params = []
     optional_params = []
-    sub_apis = {}
+    sub_apis = []
 
     @classmethod
     def name(cls):

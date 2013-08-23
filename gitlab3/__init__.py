@@ -62,12 +62,14 @@ def _add_list_fn(api, api_definition, parent):
         else:  # Obtain full list
             data = {'per_page': _MAX_PER_PAGE}
             data['page'] = 1
+            last_objs = None  # GitLab doesn't always return empty list at end
             while True:
                 objs = parent._get(api._uq_url, data=data)
-                if not objs:
+                if not objs or objs == last_objs:  # ouch...pricey
                     break
                 for obj in objs:
                     ret.append(api(parent, obj))
+                last_objs = objs
                 data['page'] += 1
         return ret
     setattr(parent, api_definition.plural_name(), fn)
@@ -133,7 +135,7 @@ def _add_find_fn(name, list_fn, parent):
 def _add_get_fn(api, name, parent):
     """Create a <PARENT_API>.get_<name>() function"""
     def fn(key=[], **kwargs):
-        if key:
+        if key != []:
             key = [key]
         data = parent._get(api._q_url, addl_keys=key, data=kwargs)
         ret = api(parent, data)
@@ -163,7 +165,7 @@ def _add_edit_fn(api, name, parent):
     def parent_fn(obj):
         return obj.save()
     def self_fn(self):
-        return parent._put(api._q_url, data=self._get_data())
+        return self._put(api._q_url, data=self._get_data())
     setattr(parent, 'update_' + name, parent_fn)
     setattr(api, 'save', self_fn)
 
@@ -173,7 +175,7 @@ def _add_delete_fn(api, name, parent):
     def parent_fn(obj):
         return obj.delete()
     def self_fn(self):
-        return parent._delete(api._q_url)
+        return self._delete(api._q_url)
     setattr(parent, 'delete_' + name, parent_fn)
     setattr(api, 'delete', self_fn)
 
@@ -281,8 +283,12 @@ class _GitLabAPI(object):
 
     def _get_url(self, api_url, addl_keys=[]):
         keys = self._get_keys(addl_keys)
+        # Handle annoying case of CurrentUser (wherein we have more keys
+        # than we need) by stripping away excess keys...
+        num_url_keys = len(re.findall(r':[^/]+', api_url))
+        keys = keys[-num_url_keys:]
         for key in keys:
-            api_url = re.sub(':[^/]+', str(key), api_url, 1)
+            api_url = re.sub(r':[^/]+', str(key), api_url, 1)
         return self._base_url + api_url
 
     def _get_data(self):
@@ -298,7 +304,8 @@ class _GitLabAPI(object):
         while api._id:
             ret.append(api._id)
             api = api._parent
-        return reversed(ret)
+        ret.reverse()  # Need to modify this later so no reversed()
+        return ret
 
     def _check_status_code(self, status_code, url, data):
         if status_code < 400:
