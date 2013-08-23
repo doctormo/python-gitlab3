@@ -22,7 +22,7 @@ See http://alexvh.github.io/python-gitlab3/ for complete API information (also c
 ```python
 import gitlab3
 
-gl = gitlab3.GitLab('http://example.com/, 'token')
+gl = gitlab3.GitLab('http://example.com/', 'token')
 # Alternatively:
 gl = gitlab3.GitLab('http://example.com/')
 if not gl.login('username_or_email', 'password'):
@@ -34,7 +34,7 @@ if not gl.login('username_or_email', 'password'):
 for project in gl.projects():  # all of the current user's projects
     print project.name
 
-for event in gl.get_project(1).events(limit=10): # 10 most recent events
+for event in gl.get_project(1).events(limit=10):  # 10 most recent events
     print event.action_name
 
 for project in gl.projects(page=1, per_page=10):  # pagination
@@ -64,7 +64,7 @@ project.events(limit=10)
 
 # Adding projects
 gl.add_project('my project', description='description', public=True)
-gl.add_project_for_user('user_id', 'test project')
+gl.add_project_for_user('user_id', 'test project', description='description')
 
 # Branches and tags
 branch = project.get_branch('master')
@@ -117,9 +117,9 @@ gl.find_project(name='python-gitlab3')  # params can be any property of object
 
 projects = gl.projects()
 gl.find_project(cached=projects, name='python-gitlab3')
-gl.find_project(cached=projects, find_all=True, public=True) # public projects
+gl.find_project(cached=projects, find_all=True, public=True)  # public projects
 gl.find_project(cached=projects, find_all=True,
-                public=True, wiki_enabled=True) # public projects with wikis
+                public=True, wiki_enabled=True)  # public projects with wikis
 
 gl.find_user(email='user@example.com')
 
