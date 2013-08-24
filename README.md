@@ -34,7 +34,7 @@ if not gl.login('username_or_email', 'password'):
 for project in gl.projects():  # all of the current user's projects
     print project.name
 
-for event in gl.get_project(1).events(limit=10):  # 10 most recent events
+for event in gl.project(1).events(limit=10):  # 10 most recent events
     print event.action_name
 
 for project in gl.projects(page=1, per_page=10):  # pagination
@@ -48,7 +48,7 @@ user = gl.add_user('user@example.com', 'passwd', 'username',
                    'real name', project_limit=50, bio='bio')
 print type(user)  # => '<class 'gitlab3.User'>'
 
-user = gl.get_user(1)
+user = gl.user(1)  # or gl.get_user(1) - get_<name>() aliases <name>()
 user.email = 'change@example.com'
 user.save()  # or gl.update_user(user)
 
@@ -58,7 +58,7 @@ user.delete()  # or gl.delete_user(user)
 #
 # Example usage involving projects
 #
-project = gl.get_project(1)
+project = gl.project(1)  # or gl.get_project(1)
 print project.description
 project.events(limit=10)
 
@@ -67,7 +67,7 @@ gl.add_project('my project', description='description', public=True)
 gl.add_project_for_user('user_id', 'test project', description='description')
 
 # Branches and tags
-branch = project.get_branch('master')
+branch = project.branch('master')
 branch.protect()
 project.unprotect_branch('master')
 tags = project.tags()
@@ -86,7 +86,7 @@ issue.create_note('note body')
 # Snippets
 snippet = project.add_snippet('title', 'file_name', 'code')
 snippet.delete()  # or project.delete_snippet(snippet)
-snippet = project.get_snippet(1)
+snippet = project.snippet(1)
 snippet_notes = snippet.notes()
 
 # Files and commits
@@ -123,6 +123,6 @@ gl.find_project(cached=projects, find_all=True,
 
 gl.find_user(email='user@example.com')
 
-project = gl.get_project(1)
+project = gl.project(1)
 project.find_member(username='user')
 ```
