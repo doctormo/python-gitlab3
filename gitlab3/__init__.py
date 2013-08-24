@@ -254,6 +254,7 @@ def _add_api(definition, parent):
         _add_api(definition, cls)
 
     setattr(parent, cls_name, cls)
+    return cls
 
 
 class _GitLabAPI(object):
@@ -375,7 +376,10 @@ class GitLab(_GitLabAPI):
         setattr(_GitLabAPI, '_headers', {'PRIVATE-TOKEN': token})
 
         for sub_api in _GitLabAPIDefinition.sub_apis:
-            _add_api(sub_api, self)
+            cls = _add_api(sub_api, self)
+            cls_name = sub_api.class_name()
+            # Populate the module namespace with core classes
+            globals()[cls_name] = cls
         for action_def in _GitLabAPIDefinition.extra_actions:
             _add_extra_fn(GitLab, action_def)
 
