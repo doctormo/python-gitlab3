@@ -26,6 +26,7 @@ def uncamel(name):
 
 class APIDefinition(object):
     url = ''
+    key_name = 'id'
     actions = []
     extra_actions = []
     required_params = []
@@ -222,6 +223,7 @@ class Project(APIDefinition):
 
     class Branch(APIDefinition):
         url = '/repository/branches/:branch'
+        key_name = 'name'
         actions = [ _LIST, _GET ]
 
         @classmethod

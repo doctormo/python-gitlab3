@@ -226,12 +226,9 @@ def _add_api(definition, parent):
     else:
         uq_url = parent._uq_url
     uq_url += re.sub(r'/\:.*', '', url)  # "unqualify" the url
-    key = re.search(r'/:([^/]+)', url)
-    if key:
-        key = key.group(1)
 
     cls_attrs = {
-        '_key_name': key,
+        '_key_name': definition.key_name,
         '_q_url': q_url,
         '_uq_url': uq_url,
         '_sub_apis': sub_apis,
@@ -269,7 +266,7 @@ class _GitLabAPI(object):
 
     def __init__(self, parent, json_data={}):
         try:
-            setattr(self, '_id', json_data['id'])
+            setattr(self, '_id', json_data[self._key_name])
         except KeyError:  # some objects don't give us an id (e.g. events)
             pass
         for key, val in json_data.iteritems():
