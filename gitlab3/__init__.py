@@ -3,7 +3,7 @@ Python wrapper for GitLab API v3
 """
 
 __title__ = "gitlab3"
-__version__ = "0.1.2"
+__version__ = "0.2"
 __author__ = "Alex Van't Hof"
 __license__ = "LGPLv3"
 __copyright__ = "Copyright 2013 Alex Van't Hof"
