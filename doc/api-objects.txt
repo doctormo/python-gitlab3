@@ -72,6 +72,7 @@ gitlab3.GitLab.Project.issues	gitlab3.GitLab.Project-class.html#issues
 gitlab3.GitLab.Project.member	gitlab3.GitLab.Project-class.html#member
 gitlab3.GitLab.Project.delete_fork	gitlab3.GitLab.Project-class.html#delete_fork
 gitlab3.GitLab.Project.add_issue	gitlab3.GitLab.Project-class.html#add_issue
+gitlab3.GitLab.Project.deploy_key	gitlab3.GitLab.Project-class.html#deploy_key
 gitlab3.GitLab.Project.delete_member	gitlab3.GitLab.Project-class.html#delete_member
 gitlab3.GitLab.Project.add_snippet	gitlab3.GitLab.Project-class.html#add_snippet
 gitlab3.GitLab.Project.find_merge_request	gitlab3.GitLab.Project-class.html#find_merge_request
@@ -85,7 +86,7 @@ gitlab3.GitLab.Project.add_hook	gitlab3.GitLab.Project-class.html#add_hook
 gitlab3.GitLab.Project.MergeRequest	gitlab3.GitLab.Project.MergeRequest-class.html
 gitlab3.GitLab.Project.issue	gitlab3.GitLab.Project-class.html#issue
 gitlab3.GitLab.Project.events	gitlab3.GitLab.Project-class.html#events
-gitlab3.GitLab.Project.update_issue	gitlab3.GitLab.Project-class.html#update_issue
+gitlab3.GitLab.Project.blob	gitlab3.GitLab.Project-class.html#blob
 gitlab3.GitLab.Project.files	gitlab3.GitLab.Project-class.html#files
 gitlab3.GitLab.Project.update_member	gitlab3.GitLab.Project-class.html#update_member
 gitlab3.GitLab.Project.fork_from	gitlab3.GitLab.Project-class.html#fork_from
@@ -119,7 +120,7 @@ gitlab3.GitLab.Project.add_deploy_key	gitlab3.GitLab.Project-class.html#add_depl
 gitlab3.GitLab.Project.delete_deploy_key	gitlab3.GitLab.Project-class.html#delete_deploy_key
 gitlab3.GitLab.Project.delete_snippet	gitlab3.GitLab.Project-class.html#delete_snippet
 gitlab3.GitLab.Project.File	gitlab3.GitLab.Project.File-class.html
-gitlab3.GitLab.Project.deploy_key	gitlab3.GitLab.Project-class.html#deploy_key
+gitlab3.GitLab.Project.update_issue	gitlab3.GitLab.Project-class.html#update_issue
 gitlab3.GitLab.Project.Event	gitlab3.GitLab.Project.Event-class.html
 gitlab3.GitLab.Project.find_milestone	gitlab3.GitLab.Project-class.html#find_milestone
 gitlab3.GitLab.Project.find_issue	gitlab3.GitLab.Project-class.html#find_issue
