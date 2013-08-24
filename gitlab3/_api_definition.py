@@ -173,15 +173,38 @@ class Project(APIDefinition):
         url = '/repository/branches/:branch/protect'
         method = _HTTP_PUT
         url_params = [
-            'branch',
+            'branch',  # GitLab API is branch name
         ]
+        @staticmethod
+        def wrapper(extra_action_fn, parent):
+            """Accept a Branch object instead of a branch name"""
+            def wrapped(self, branch):
+                name = getattr(branch, 'name', branch)  # allow passing name
+                extra_action_fn(self, name)
+                try: # If passed a branch object, update it
+                    setattr(branch, 'protected', True)
+                except AttributeError:
+                    pass
+            return wrapped
     class UnprotectBranchAction(ExtraActionDefinition):
         """gl.Project.unprotect_branch()"""
         url = '/repository/branches/:branch/unprotect'
         method = _HTTP_PUT
         url_params = [
-            'branch',
+            'branch',  # GitLab API is branch name
         ]
+        @staticmethod
+        def wrapper(extra_action_fn, parent):
+            """Accept a Branch object instead of a branch name"""
+            def wrapped(self, branch):
+                name = getattr(branch, 'name', branch)  # allow passing name
+                extra_action_fn(self, name)
+                try: # If passed a branch object, update it
+                    setattr(branch, 'protected', False)
+                except AttributeError:
+                    pass
+            return wrapped
+
     extra_actions = [
         ForkFromAction,
         DeleteForkAction,
@@ -236,10 +259,24 @@ class Project(APIDefinition):
             """gl.Project.Branch.protect()"""
             url = '/protect'
             method = _HTTP_PUT
+            @staticmethod
+            def wrapper(extra_action_fn, parent):
+                """Accept a Branch object instead of a branch name"""
+                def wrapped(self):
+                    extra_action_fn(self)
+                    setattr(self, 'protected', True)
+                return wrapped
         class UnprotectAction(ExtraActionDefinition):
             """gl.Project.Branch.unprotect()"""
             url = '/unprotect'
             method = _HTTP_PUT
+            @staticmethod
+            def wrapper(extra_action_fn, parent):
+                """Accept a Branch object instead of a branch name"""
+                def wrapped(self):
+                    extra_action_fn(self)
+                    setattr(self, 'protected', False)
+                return wrapped
         extra_actions = [ ProtectAction, UnprotectAction ]
 
     class MergeRequest(APIDefinition):
