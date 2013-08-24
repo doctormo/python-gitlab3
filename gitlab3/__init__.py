@@ -190,7 +190,7 @@ def _get_http_request_fn(api, method):
         return api._delete
 
 
-def _add_extra_fn(api, action_def):
+def _add_extra_fn(api, action_def, parent=None):
     required_params = action_def.required_params
     # url_params are required params, but get passed as part of url
     url_params = action_def.url_params
@@ -212,6 +212,12 @@ def _add_extra_fn(api, action_def):
         for param in required_params:
             kwargs[param] = args.pop(0)
         return req_fn(_self, url, addl_keys=arg_keys, data=kwargs)
+
+    # Apply a decorator to the extra action function if one is defined
+    wrapper = getattr(action_def, 'wrapper', None)
+    if wrapper:
+        fn = wrapper(fn, parent)
+
     setattr(api, action_def.name(), fn)
 
 
@@ -248,7 +254,7 @@ def _add_api(definition, parent):
     if _DELETE in definition.actions:
         _add_delete_fn(cls, name, parent)
     for action_def in definition.extra_actions:
-        _add_extra_fn(cls, action_def)
+        _add_extra_fn(cls, action_def, parent)
 
     for definition in sub_apis:
         _add_api(definition, cls)
