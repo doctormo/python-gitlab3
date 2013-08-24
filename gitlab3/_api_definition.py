@@ -438,6 +438,16 @@ class GitLab(APIDefinition):
             'snippets_enabled',
             'public',
         ]
+
+        @staticmethod
+        def wrapper(extra_action_fn, parent):
+            def wrapped(*args, **kwargs):
+                """Return the created Project"""
+                import gitlab3
+                project_data = extra_action_fn(*args, **kwargs)
+                return gitlab3.Project(parent, project_data)
+            return wrapped
+
     extra_actions = [ AddProjectForUserAction ]
 
     sub_apis = [
