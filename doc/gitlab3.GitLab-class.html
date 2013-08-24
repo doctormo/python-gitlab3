@@ -160,8 +160,8 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_current_user"></a><span class="summary-sig-name">get_current_user</span>(<span class="summary-sig-arg">id</span>)</span><br />
-      Return the CurrentUser specified by the given <i>id</i></td>
+          <td><span class="summary-sig"><a href="gitlab3.GitLab-class.html#current_user" class="summary-sig-name">current_user</a>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the CurrentUser specified by the given <i>id</i>.</td>
           <td align="right" valign="top">
             
             
@@ -255,8 +255,8 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_group"></a><span class="summary-sig-name">get_group</span>(<span class="summary-sig-arg">id</span>)</span><br />
-      Return the Group specified by the given <i>id</i></td>
+          <td><span class="summary-sig"><a href="gitlab3.GitLab-class.html#group" class="summary-sig-name">group</a>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the Group specified by the given <i>id</i>.</td>
           <td align="right" valign="top">
             
             
@@ -402,8 +402,8 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_project"></a><span class="summary-sig-name">get_project</span>(<span class="summary-sig-arg">id</span>)</span><br />
-      Return the Project specified by the given <i>id</i></td>
+          <td><span class="summary-sig"><a href="gitlab3.GitLab-class.html#project" class="summary-sig-name">project</a>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the Project specified by the given <i>id</i>.</td>
           <td align="right" valign="top">
             
             
@@ -483,8 +483,8 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_user"></a><span class="summary-sig-name">get_user</span>(<span class="summary-sig-arg">id</span>)</span><br />
-      Return the User specified by the given <i>id</i></td>
+          <td><span class="summary-sig"><a href="gitlab3.GitLab-class.html#user" class="summary-sig-name">user</a>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the User specified by the given <i>id</i>.</td>
           <td align="right" valign="top">
             
             
@@ -600,8 +600,8 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="get_team"></a><span class="summary-sig-name">get_team</span>(<span class="summary-sig-arg">id</span>)</span><br />
-      Return the Team specified by the given <i>id</i></td>
+          <td><span class="summary-sig"><a href="gitlab3.GitLab-class.html#team" class="summary-sig-name">team</a>(<span class="summary-sig-arg">id</span>)</span><br />
+      Return the Team specified by the given <i>id</i>.</td>
           <td align="right" valign="top">
             
             
@@ -693,6 +693,26 @@
   </td>
 </tr>
 </table>
+<a name="current_user"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">current_user</span>(<span class="sig-arg">id</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the CurrentUser specified by the given <i>id</i>. 
+  <i>get_current_user()</i> may be used as an alias for this function.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
 <a name="issues"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -736,10 +756,9 @@
   
   <p>Find the first matching Issue whose properties match all of the key, 
   value pairs given in the arguments.</p>
-  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
-  type.plural_name of &lt;class 'gitlab3._api_definition.Issue'&gt;&gt; 
-  will be returned. If a <i>cached</i> list is not given, the list to 
-  search will be queried from the server each time this is called.</p>
+  <p>If <i>find_all</i> is true, a list of all matching issues will be 
+  returned. If a <i>cached</i> list is not given, the list to search will 
+  be queried from the server each time this is called.</p>
   <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
   <dl class="fields">
   </dl>
@@ -788,11 +807,30 @@
   
   <p>Find the first matching Group whose properties match all of the key, 
   value pairs given in the arguments.</p>
-  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
-  type.plural_name of &lt;class 'gitlab3._api_definition.Group'&gt;&gt; 
-  will be returned. If a <i>cached</i> list is not given, the list to 
-  search will be queried from the server each time this is called.</p>
+  <p>If <i>find_all</i> is true, a list of all matching groups will be 
+  returned. If a <i>cached</i> list is not given, the list to search will 
+  be queried from the server each time this is called.</p>
   <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="group"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">group</span>(<span class="sig-arg">id</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the Group specified by the given <i>id</i>. <i>get_group()</i> 
+  may be used as an alias for this function.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -861,11 +899,9 @@
   
   <p>Find the first matching SystemHook whose properties match all of the 
   key, value pairs given in the arguments.</p>
-  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
-  type.plural_name of &lt;class 
-  'gitlab3._api_definition.SystemHook'&gt;&gt; will be returned. If a 
-  <i>cached</i> list is not given, the list to search will be queried from 
-  the server each time this is called.</p>
+  <p>If <i>find_all</i> is true, a list of all matching system_hooks will 
+  be returned. If a <i>cached</i> list is not given, the list to search 
+  will be queried from the server each time this is called.</p>
   <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
   <dl class="fields">
   </dl>
@@ -934,11 +970,30 @@
   
   <p>Find the first matching Project whose properties match all of the key,
   value pairs given in the arguments.</p>
-  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
-  type.plural_name of &lt;class 'gitlab3._api_definition.Project'&gt;&gt; 
-  will be returned. If a <i>cached</i> list is not given, the list to 
-  search will be queried from the server each time this is called.</p>
+  <p>If <i>find_all</i> is true, a list of all matching projects will be 
+  returned. If a <i>cached</i> list is not given, the list to search will 
+  be queried from the server each time this is called.</p>
   <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="project"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">project</span>(<span class="sig-arg">id</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the Project specified by the given <i>id</i>. 
+  <i>get_project()</i> may be used as an alias for this function.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -1014,11 +1069,30 @@
   
   <p>Find the first matching User whose properties match all of the key, 
   value pairs given in the arguments.</p>
-  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
-  type.plural_name of &lt;class 'gitlab3._api_definition.User'&gt;&gt; will
-  be returned. If a <i>cached</i> list is not given, the list to search 
-  will be queried from the server each time this is called.</p>
+  <p>If <i>find_all</i> is true, a list of all matching users will be 
+  returned. If a <i>cached</i> list is not given, the list to search will 
+  be queried from the server each time this is called.</p>
   <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="user"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">user</span>(<span class="sig-arg">id</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the User specified by the given <i>id</i>. <i>get_user()</i> 
+  may be used as an alias for this function.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -1096,11 +1170,30 @@
   
   <p>Find the first matching Team whose properties match all of the key, 
   value pairs given in the arguments.</p>
-  <p>If <i>find_all</i> is true, a list of all matching &lt;bound method 
-  type.plural_name of &lt;class 'gitlab3._api_definition.Team'&gt;&gt; will
-  be returned. If a <i>cached</i> list is not given, the list to search 
-  will be queried from the server each time this is called.</p>
+  <p>If <i>find_all</i> is true, a list of all matching teams will be 
+  returned. If a <i>cached</i> list is not given, the list to search will 
+  be queried from the server each time this is called.</p>
   <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="team"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">team</span>(<span class="sig-arg">id</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the Team specified by the given <i>id</i>. <i>get_team()</i> 
+  may be used as an alias for this function.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -1180,7 +1273,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Fri Aug 23 00:27:51 2013
+    Generated by Epydoc 3.0.1 on Fri Aug 23 22:24:14 2013
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
