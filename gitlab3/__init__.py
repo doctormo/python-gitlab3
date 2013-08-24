@@ -300,7 +300,7 @@ class _GitLabAPI(object):
         ret = []
         ret += addl_keys  # want copy of addl_keys
         api = self
-        while api._id:
+        while api and api._id:
             ret.append(api._id)
             api = api._parent
         ret.reverse()  # Need to modify this later so no reversed()
@@ -380,7 +380,7 @@ class GitLab(_GitLabAPI):
         for sub_api in _GitLabAPIDefinition.sub_apis:
             _add_api(sub_api, self)
         for action_def in _GitLabAPIDefinition.extra_actions:
-            _add_extra_fn(self, action_def)
+            _add_extra_fn(GitLab, action_def)
 
     def login(self, login_or_email, password):
         """Log in to GitLab. This is unnecessary if a token was given
