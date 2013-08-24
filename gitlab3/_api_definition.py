@@ -168,6 +168,9 @@ class Project(APIDefinition):
         required_params = [
             'filepath',
         ]
+    class BlobAction(GetBlobAction):
+        """Alias for get_blob()"""
+        pass
     class ProtectBranchAction(ExtraActionDefinition):
         """gl.Project.protect_branch()"""
         url = '/repository/branches/:branch/protect'
@@ -209,6 +212,7 @@ class Project(APIDefinition):
         ForkFromAction,
         DeleteForkAction,
         GetBlobAction,
+        BlobAction,
         ProtectBranchAction,
         UnprotectBranchAction,
     ]
