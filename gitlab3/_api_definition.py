@@ -199,6 +199,7 @@ class Project(APIDefinition):
         actions = [ _LIST ]
 
     class Hook(APIDefinition):
+        url = '/hooks/:id'
         actions = [ _LIST, _GET, _ADD, _EDIT, _DELETE ]
         required_params = [
             'url',
