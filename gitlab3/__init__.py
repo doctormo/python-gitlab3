@@ -30,7 +30,7 @@ _MAX_PER_PAGE = 100
 
 def _add_list_fn(api, api_definition, parent):
     """Create a <PARENT_API>.<name>s() function"""
-    def fn(limit=None, page=None, per_page=None):
+    def fn(limit=None, page=None, per_page=None, **data):
         ret = []
         if limit:  # Give limit precedence over other params if misused
             page = None
@@ -40,7 +40,6 @@ def _add_list_fn(api, api_definition, parent):
             limit = None
 
         if page or per_page:
-            data = {}
             if page:
                 data['page'] = page
             if per_page:
@@ -49,7 +48,7 @@ def _add_list_fn(api, api_definition, parent):
             for obj in objs:
                 ret.append(api(parent, obj))
         elif limit:
-            data = {'per_page': _MAX_PER_PAGE}
+            data['per_page'] = _MAX_PER_PAGE
             num_pages = int(ceil(float(limit) / _MAX_PER_PAGE))
             remainder = limit % _MAX_PER_PAGE
             for i in xrange(1, num_pages+1):
@@ -60,7 +59,7 @@ def _add_list_fn(api, api_definition, parent):
                 for obj in objs:
                     ret.append(api(parent, obj))
         else:  # Obtain full list
-            data = {'per_page': _MAX_PER_PAGE}
+            data['per_page'] = _MAX_PER_PAGE
             data['page'] = 1
             last_objs = None  # GitLab doesn't always return empty list at end
             while True:
