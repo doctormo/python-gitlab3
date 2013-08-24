@@ -140,6 +140,7 @@ def _add_get_fn(api, name, parent):
         ret = api(parent, data)
         return ret
     setattr(parent, 'get_' + name, fn)
+    setattr(parent, name, fn)
 
 
 def _add_create_fn(api, api_definition, parent):
