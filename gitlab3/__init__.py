@@ -108,6 +108,8 @@ def _find_matches(objects, kwargs, find_all):
                 ret.append(obj)
             else:
                 return obj
+    if not find_all:
+        return None
     return ret
 
 
