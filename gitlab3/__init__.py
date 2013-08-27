@@ -84,7 +84,7 @@ def _find_matches(objects, kwargs, find_all):
         match = True
         # Match all supplied parameters
         for param, val in kwargs.iteritems():
-            if not getattr(obj, param, None) == val:
+            if not getattr(obj, param) == val:
                 match = False
                 break
         if match:
