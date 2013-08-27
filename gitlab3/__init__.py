@@ -14,10 +14,10 @@ import re
 import requests
 from math import ceil
 
-import exceptions
-from _api_definition import GitLab as _GitLabAPIDefinition
-from _api_definition import _LIST, _GET, _ADD, _EDIT, _DELETE, _HTTP_GET, \
-                            _HTTP_PUT, _HTTP_POST, _HTTP_DELETE
+from . import exceptions
+from ._api_definition import GitLab as _GitLabAPIDefinition
+from ._api_definition import _LIST, _GET, _ADD, _EDIT, _DELETE, \
+                             _HTTP_GET, _HTTP_PUT, _HTTP_POST, _HTTP_DELETE
 
 # Access level constants
 ACCESS_LEVEL_GUEST = 10
