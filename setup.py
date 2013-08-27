@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='gitlab3',
-    version='0.3.0',
+    version='0.3.1',
     license='LGPLv3',
     description='GitLab API v3 Python Wrapper.',
     long_description='A complete Python client/wrapper for GitLab API v3',
@@ -16,6 +16,5 @@ setup(
     author_email='alexvh@cs.columbia.edu',
     install_requires=['requests'],
     url='http://github.com/alexvh/python-gitlab3',
-    bugtrack_url='http://github.com/alexvh/python-gitlab3/issues',
     keywords='gitlab api client wrapper',
 )
