@@ -47,6 +47,7 @@ for project in gl.projects(page=1, per_page=10):  # pagination
 user = gl.add_user('user@example.com', 'passwd', 'username',
                    'real name', project_limit=50, bio='bio')
 print type(user)  # => '<class 'gitlab3.User'>'
+print type(user.created_at)  # => '<type 'datetime.datetime'>'
 
 user = gl.user(1)  # or gl.get_user(1) - get_<name>() aliases <name>()
 user.email = 'change@example.com'

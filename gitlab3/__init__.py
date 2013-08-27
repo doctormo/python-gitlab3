@@ -12,6 +12,7 @@ __copyright__ = "Copyright 2013 Alex Van't Hof"
 import json
 import re
 import requests
+from datetime import tzinfo, timedelta, datetime
 from math import ceil
 
 from . import exceptions
@@ -39,15 +40,17 @@ def _query_list(api_cls, parent, data):
     while True:
         data['page'] = page
         objs = parent._get(api_cls._uq_url, data=data)
-        # GitLab doesn't always return empty list at end...
-        if not objs or objs == last_objs:
+        # GitLab doesn't always return empty list at end, may repeat last...
+        if not objs or str(objs) == last_objs:
             # Some listings start with page 0, others with 1...
             # (in the latter case, page 0 will be the same as page 1
             if page == 1:  # If page 0 == page 1, try page 2
                 page += 1
                 continue
             break
-        last_objs = objs
+        # "hash" the list as a string for comparison to prevent deep copy
+        # (would be modified when converting date strings to datetime objects)
+        last_objs = str(objs)
         page += 1
         for obj in objs:
             yield api_cls(parent, obj)
@@ -293,6 +296,8 @@ class _GitLabAPI(object):
             setattr(self, '_id', json_data[self._key_name])
         except KeyError:  # some objects don't give us an id (e.g. events)
             pass
+        if self._convert_dates_enabled:
+            self._convert_dates(json_data)
         for key, val in json_data.iteritems():
             setattr(self, key, val)
         self._parent = parent
@@ -300,6 +305,51 @@ class _GitLabAPI(object):
         for sub_api in self._sub_apis:
             _add_api(sub_api, self)
         self._sub_apis = None
+
+    _date_fields = {
+        'created_at': True,
+        'updated_at': True,
+        'expires_at': True,
+        'last_activity_at': True,
+        'timestamp': True,
+        'authored_date': True,
+        'committed_date': True,
+    }
+    def _convert_dates(self, data):
+        if type(data) == list:
+            for item in data:
+                self._convert_dates(item)
+            return
+        for key, val in data.iteritems():
+            if type(val) == dict:
+                self._convert_dates(val)
+            if self._date_fields.get(key):
+                data[key] = self._convert_gitlab_date(val)
+
+    def _convert_gitlab_date(self, datetime_str):
+        """Convert GitLab datetime string to datetime object"""
+        fmt = '%Y-%m-%dT%H:%M:%S'
+        offset = None
+        if datetime_str.endswith('Z'):
+            datetime_str = datetime_str[:-1]
+        else:
+            offset = datetime_str[-6:]
+            datetime_str = datetime_str[:-6]
+        dt = datetime.strptime(datetime_str, fmt)
+        if not offset:
+            return dt
+        class GitLabTzInfo(tzinfo):
+            def __init__(self, utcoffset):
+                self.utcoffset_val = timedelta(minutes=utcoffset)
+            def utcoffset(self, dt):
+                return self.utcoffset_val
+        sign = offset[0]
+        hours = int(offset[1:3])
+        minutes = int(offset[-2:])
+        offset = hours*60 + minutes
+        if sign == '-':
+            offset = -offset
+        return dt.replace(tzinfo=GitLabTzInfo(offset))
 
     def _get_url(self, api_url, addl_keys=[]):
         keys = self._get_keys(addl_keys)
@@ -377,9 +427,10 @@ class _GitLabAPI(object):
 class GitLab(_GitLabAPI):
     """A GitLab API connection."""
 
-    def __init__(self, gitlab_url, token=None):
+    def __init__(self, gitlab_url, token=None, convert_dates=True):
         setattr(_GitLabAPI, '_base_url', gitlab_url + "/api/v3")
         setattr(_GitLabAPI, '_headers', {'PRIVATE-TOKEN': token})
+        setattr(_GitLabAPI, '_convert_dates_enabled', convert_dates)
 
         for sub_api in _GitLabAPIDefinition.sub_apis:
             cls = _add_api(sub_api, self)
