@@ -327,64 +327,47 @@ class _GitLabAPI(object):
         ret.reverse()  # Need to modify this later so no reversed()
         return ret
 
+    _code_to_exc = {
+        400: exceptions.MissingRequiredAttribute,
+        401: exceptions.UnauthorizedRequest,
+        403: exceptions.ForbiddenRequest,
+        404: exceptions.ResourceNotFound,
+        405: exceptions.RequestNotSupported,
+        409: exceptions.ResourceConflict,
+        500: exceptions.ServerError,
+    }
     def _check_status_code(self, status_code, url, data):
         if status_code < 400:
             return
         msg = "URL: %s, Data: %s" % (url, data)
-        if status_code == 400:
-            raise exceptions.MissingRequiredAttribute(msg)
-        elif status_code == 401:
-            raise exceptions.UnauthorizedRequest(msg)
-        elif status_code == 403:
-            raise exceptions.ForbiddenRequest(msg)
-        elif status_code == 404:
-            raise exceptions.ResourceNotFound(msg)
-        elif status_code == 405:
-            raise exceptions.RequestNotSupported(msg)
-        elif status_code == 409:
-            raise exceptions.ResourceConflict(msg)
-        elif status_code == 500:
-            raise exceptions.ServerError(msg)
+        raise self._code_to_exc[status_code](msg)
 
     def _get(self, api_url, addl_keys=[], data=None):
         """get or list"""
+        return self._request(requests.get, api_url, addl_keys, data)
+
+    def _post(self, api_url, addl_keys=[], data=None):
+        return self._request(requests.post, api_url, addl_keys, data)
+
+    def _put(self, api_url, addl_keys=[], data=None):
+        return self._request(requests.put, api_url, addl_keys, data)
+
+    def _delete(self, api_url, addl_keys=[], data=None):
+        return self._request(requests.delete, api_url, addl_keys, data)
+
+    def _request(self, request_fn, api_url, addl_keys, data):
         url = self._get_url(api_url, addl_keys)
+        #print "%s %s, data=%s" % (request_fn.__name__.upper(), url, str(data))
         try:
-            r = requests.get(url, headers=self._headers, data=data)
+            r = request_fn(url, headers=self._headers, data=data)
         except requests.exceptions.RequestException:
-            raise exceptions.ConnectionError("Failed to get " + url)
+            msg = "'%s' request to '%s' failed" % (request_fn.__name__, url)
+            raise exceptions.ConnectionError(msg)
         self._check_status_code(r.status_code, url, data)
         try:
             return json.loads(r.content)
         except ValueError:  # XXX: assume we're returning plain text
             return r.content
-
-    def _post(self, api_url, addl_keys=[], data=None):
-        url = self._get_url(api_url, addl_keys)
-        try:
-            r = requests.post(url, headers=self._headers, data=data)
-        except requests.exceptions.RequestException:
-            raise exceptions.ConnectionError("Failed to post " + url)
-        self._check_status_code(r.status_code, url, data)
-        return json.loads(r.content)
-
-    def _put(self, api_url, addl_keys=[], data=None):
-        url = self._get_url(api_url, addl_keys)
-        try:
-            r = requests.put(url, headers=self._headers, data=data)
-        except requests.exceptions.RequestException:
-            raise exceptions.ConnectionError("Failed to put " + url)
-        self._check_status_code(r.status_code, url, data)
-        return json.loads(r.content)
-
-    def _delete(self, api_url, addl_keys=[], data=None):
-        url = self._get_url(api_url, addl_keys)
-        try:
-            r = requests.delete(url, headers=self._headers, data=data)
-        except requests.exceptions.RequestException:
-            raise exceptions.ConnectionError("Failed to delete " + url)
-        self._check_status_code(r.status_code, url, data)
-        return json.loads(r.content)
 
     def __repr__(self):
         """__repr__ function for new API class"""
