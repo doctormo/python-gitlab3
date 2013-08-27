@@ -152,13 +152,24 @@ def _add_create_fn(api, api_definition, parent):
     """Create a <PARENT_API>.add_<name>() function"""
     fn_name = "add_" + api_definition.name()
     required_params = api_definition.required_params
+    optional_params = api_definition.optional_params
     def fn(*args, **kwargs):
-        if len(args) != len(required_params):
-            raise TypeError("%s() takes exactly %d arguments (%d given)" \
+        if len(args) < len(required_params):
+            raise TypeError("%s() takes at least %d arguments (%d given)" \
                             % (fn_name, len(required_params), len(args)))
-        args = list(args)
-        for param in required_params:
-            kwargs[param] = args.pop(0)
+        max_args = len(required_params) + len(optional_params)
+        if len(args) > max_args:
+            raise TypeError("%s() takes at most %d arguments (%d given)" \
+                            % (fn_name, max_args, len(args)))
+        idx = -1
+        # Load kwargs with required params
+        for idx, param in enumerate(required_params):
+            kwargs[param] = args[idx]
+        idx += 1
+        # Load kwargs with unnamed optional params
+        for i in xrange(idx, len(args)):
+            kwargs[optional_params[i-idx]] = args[i]
+
         data = parent._post(api._uq_url, data=kwargs)
         ret = api(parent, data)
         return ret
