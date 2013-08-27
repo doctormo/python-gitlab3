@@ -163,14 +163,11 @@ class Project(APIDefinition):
         url = '/repository/commits/:sha/blob'
         method = _HTTP_GET
         url_params = [
-            'sha',
+            'sha_or_ref_name',
         ]
         required_params = [
             'filepath',
         ]
-    class BlobAction(GetBlobAction):
-        """Alias for get_blob()"""
-        pass
     class ProtectBranchAction(ExtraActionDefinition):
         """gl.Project.protect_branch()"""
         url = '/repository/branches/:branch/protect'
@@ -212,7 +209,6 @@ class Project(APIDefinition):
         ForkFromAction,
         DeleteForkAction,
         GetBlobAction,
-        BlobAction,
         ProtectBranchAction,
         UnprotectBranchAction,
     ]
