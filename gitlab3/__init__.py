@@ -28,6 +28,31 @@ ACCESS_LEVEL_MASTER = 40
 # Maximum 'per_page' value allowed by GitLab when listing
 _MAX_PER_PAGE = 100
 
+
+def _query_list(api_cls, parent, data):
+    """Helper for find and list functions. Queries GitLab for an entire
+       listing of objects '_MAX_PER_PAGE' objects at a time.
+    """
+    data['per_page'] = _MAX_PER_PAGE
+    page = 0
+    last_objs = None
+    while True:
+        data['page'] = page
+        objs = parent._get(api_cls._uq_url, data=data)
+        # GitLab doesn't always return empty list at end...
+        if not objs or objs == last_objs:
+            # Some listings start with page 0, others with 1...
+            # (in the latter case, page 0 will be the same as page 1
+            if page == 1:  # If page 0 == page 1, try page 2
+                page += 1
+                continue
+            break
+        last_objs = objs
+        page += 1
+        for obj in objs:
+            yield api_cls(parent, obj)
+
+
 def _add_list_fn(api, api_definition, parent):
     """Create a <PARENT_API>.<name>s() function"""
     def fn(limit=None, page=None, per_page=None, **data):
@@ -59,17 +84,8 @@ def _add_list_fn(api, api_definition, parent):
                 for obj in objs:
                     ret.append(api(parent, obj))
         else:  # Obtain full list
-            data['per_page'] = _MAX_PER_PAGE
-            data['page'] = 1
-            last_objs = None  # GitLab doesn't always return empty list at end
-            while True:
-                objs = parent._get(api._uq_url, data=data)
-                if not objs or objs == last_objs:  # ouch...pricey
-                    break
-                for obj in objs:
-                    ret.append(api(parent, obj))
-                last_objs = objs
-                data['page'] += 1
+            for api_obj in _query_list(api, parent, data):
+                ret.append(api_obj)
         return ret
     setattr(parent, api_definition.plural_name(), fn)
     return fn
@@ -95,7 +111,7 @@ def _find_matches(objects, kwargs, find_all):
     return ret
 
 
-def _add_find_fn(name, list_fn, parent):
+def _add_find_fn(api, name, parent):
     """Create a <PARENT_API>.find_<name>() function"""
     def fn(**kwargs):
         if not kwargs:
@@ -111,23 +127,10 @@ def _add_find_fn(name, list_fn, parent):
             del kwargs['find_all']
         except KeyError:
             find_all = False
+        if not objects:
+            objects = _query_list(api, parent, {})
 
-        if objects:  # A cached list was supplied
-            return _find_matches(objects, kwargs, find_all)
-        elif find_all:  # Have to search entire list of objects
-            return _find_matches(list_fn(), kwargs, find_all)
-        # Optimize slightly and don't obtain whole object list if not necessary
-        ret = []
-        page = 1
-        while True:
-            objects = list_fn(page=page, per_page=_MAX_PER_PAGE)
-            if not objects:
-                break
-            match = _find_matches(objects, kwargs, find_all)
-            if match:
-                return match
-            page += 1
-        return ret
+        return _find_matches(objects, kwargs, find_all)
     setattr(parent, 'find_' + name, fn)
 
 
@@ -245,7 +248,7 @@ def _add_api(definition, parent):
 
     if _LIST in definition.actions:
         list_fn = _add_list_fn(cls, definition, parent)
-        _add_find_fn(name, list_fn, parent)
+        _add_find_fn(cls, name, parent)
     if _GET in definition.actions:
         _add_get_fn(cls, name, parent)
     if _ADD in definition.actions:
