@@ -1,12 +1,12 @@
 """
-Python wrapper for GitLab API v3
-"""
+gitlab3
+~~~~~~~
 
-__title__ = "gitlab3"
-__version__ = "0.3.1"
-__author__ = "Alex Van't Hof"
-__license__ = "LGPLv3"
-__copyright__ = "Copyright 2013 Alex Van't Hof"
+Python wrapper for GitLab API v3
+
+:copyright: (c) 2013 by Alex Van't Hof.
+:license: LGPLv3, see LICENSE for more details.
+"""
 
 
 import json
