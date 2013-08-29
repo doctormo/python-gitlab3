@@ -363,11 +363,18 @@ class Project(APIDefinition):
         ]
 
     class Commit(APIDefinition):
-        url = '/repository/commits'
-        actions = [ _LIST ]
+        url = '/repository/commits/:sha'
+        actions = [ _LIST, _GET ]
         optional_params = [
             'ref_name',
         ]
+        class DiffAction(ExtraActionDefinition):
+            """gl.Project.Commit.diff()"""
+            url = '/diff'
+            method = _HTTP_GET
+        class GetDiffAction(DiffAction):
+            pass
+        extra_actions = [ DiffAction, GetDiffAction ]
 
     class WallNote(Note):
         @classmethod
