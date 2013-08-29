@@ -82,7 +82,9 @@ project.delete_member('user_id')
 # Issues
 issues = project.issues(limit=10)
 issue = project.add_issue('title', description='description')
-issue.create_note('note body')
+issue.add_note('note body')
+issue.close()
+issue.reopen()
 
 # Snippets
 snippet = project.add_snippet('title', 'file_name', 'code')

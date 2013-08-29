@@ -243,6 +243,22 @@ class Project(APIDefinition):
             'state_event',
         ]
         sub_apis = [ Note ]
+        class CloseAction(ExtraActionDefinition):
+            """gl.Project.Issue.close()"""
+            method = _HTTP_PUT
+            required_params = [ 'state_event' ]
+            _state_after = 'closed'
+            @classmethod
+            def wrapper(cls, extra_action_fn, parent):
+                def wrapped(self):
+                    extra_action_fn(self, state_event=cls.name())
+                    setattr(self, 'state', cls._state_after)
+                return wrapped
+        class ReopenAction(CloseAction):
+            _state_after = 'reopened'
+
+        extra_actions = [ CloseAction, ReopenAction ]
+
 
     class Branch(APIDefinition):
         url = '/repository/branches/:branch'
@@ -438,7 +454,6 @@ class GitLab(APIDefinition):
             'snippets_enabled',
             'public',
         ]
-
         @staticmethod
         def wrapper(extra_action_fn, parent):
             def wrapped(*args, **kwargs):

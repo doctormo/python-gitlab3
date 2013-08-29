@@ -263,7 +263,7 @@ def _add_api(definition, parent):
     cls = type(cls_name, (_GitLabAPI,), cls_attrs)
 
     if _LIST in definition.actions:
-        list_fn = _add_list_fn(cls, definition, parent)
+        _add_list_fn(cls, definition, parent)
         _add_find_fn(cls, name, parent)
     if _GET in definition.actions:
         _add_get_fn(cls, name, parent)
