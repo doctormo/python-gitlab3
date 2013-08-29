@@ -2,9 +2,7 @@
 
 A Python wrapper for GitLab API v3.
 
-There are existing python wrappers (notably, http://github.com/gpocentek/python-gitlab and http://github.com/Itxaka/python-gitlab), but I'm not fond of their interface/usage and, more importantly, I wanted a weekend project to abuse Python with. This also provides complete coverage of the GitLab API and is easily maintainable.
-
-Disclaimer: Testing as of now has been minimal. I wrote this for use in a planned personal project, without the intention of open sourcing it, and have yet to get to that project. Testing thus far has consisted of a quick and dirty script filled with component tests that covers core functionality.
+There are existing python wrappers (notably, http://github.com/gpocentek/python-gitlab and http://github.com/Itxaka/python-gitlab), but I'm not fond of their interface/usage. In addition, this provides complete coverage of the GitLab API (and is easily maintainable).
 
 # Dependencies
 * [python-requests](http://docs.python-requests.org/en/latest/)
