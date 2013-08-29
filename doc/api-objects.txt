@@ -120,6 +120,7 @@ gitlab3.GitLab.Project.add_deploy_key	gitlab3.GitLab.Project-class.html#add_depl
 gitlab3.GitLab.Project.delete_deploy_key	gitlab3.GitLab.Project-class.html#delete_deploy_key
 gitlab3.GitLab.Project.delete_snippet	gitlab3.GitLab.Project-class.html#delete_snippet
 gitlab3.GitLab.Project.File	gitlab3.GitLab.Project.File-class.html
+gitlab3.GitLab.Project.commit	gitlab3.GitLab.Project-class.html#commit
 gitlab3.GitLab.Project.deploy_key	gitlab3.GitLab.Project-class.html#deploy_key
 gitlab3.GitLab.Project.Event	gitlab3.GitLab.Project.Event-class.html
 gitlab3.GitLab.Project.find_milestone	gitlab3.GitLab.Project-class.html#find_milestone
@@ -128,6 +129,8 @@ gitlab3.GitLab.Project.Branch	gitlab3.GitLab.Project.Branch-class.html
 gitlab3.GitLab.Project.Branch.protect	gitlab3.GitLab.Project.Branch-class.html#protect
 gitlab3.GitLab.Project.Branch.unprotect	gitlab3.GitLab.Project.Branch-class.html#unprotect
 gitlab3.GitLab.Project.Commit	gitlab3.GitLab.Project.Commit-class.html
+gitlab3.GitLab.Project.Commit.diff	gitlab3.GitLab.Project.Commit-class.html#diff
+gitlab3.GitLab.Project.Commit.get_diff	gitlab3.GitLab.Project.Commit-class.html#get_diff
 gitlab3.GitLab.Project.DeployKey	gitlab3.GitLab.Project.DeployKey-class.html
 gitlab3.GitLab.Project.DeployKey.delete	gitlab3.GitLab.Project.DeployKey-class.html#delete
 gitlab3.GitLab.Project.Event	gitlab3.GitLab.Project.Event-class.html
@@ -137,10 +140,12 @@ gitlab3.GitLab.Project.Hook.save	gitlab3.GitLab.Project.Hook-class.html#save
 gitlab3.GitLab.Project.Hook.delete	gitlab3.GitLab.Project.Hook-class.html#delete
 gitlab3.GitLab.Project.Issue	gitlab3.GitLab.Project.Issue-class.html
 gitlab3.GitLab.Project.Issue.note	gitlab3.GitLab.Project.Issue-class.html#note
+gitlab3.GitLab.Project.Issue.reopen	gitlab3.GitLab.Project.Issue-class.html#reopen
 gitlab3.GitLab.Project.Issue.notes	gitlab3.GitLab.Project.Issue-class.html#notes
 gitlab3.GitLab.Project.Issue.Note	gitlab3.GitLab.Project.Issue.Note-class.html
 gitlab3.GitLab.Project.Issue.find_note	gitlab3.GitLab.Project.Issue-class.html#find_note
 gitlab3.GitLab.Project.Issue.add_note	gitlab3.GitLab.Project.Issue-class.html#add_note
+gitlab3.GitLab.Project.Issue.close	gitlab3.GitLab.Project.Issue-class.html#close
 gitlab3.GitLab.Project.Issue.save	gitlab3.GitLab.Project.Issue-class.html#save
 gitlab3.GitLab.Project.Issue.Note	gitlab3.GitLab.Project.Issue.Note-class.html
 gitlab3.GitLab.Project.Member	gitlab3.GitLab.Project.Member-class.html
@@ -158,9 +163,10 @@ gitlab3.GitLab.Project.MergeRequest.Note	gitlab3.GitLab.Project.MergeRequest.Not
 gitlab3.GitLab.Project.Milestone	gitlab3.GitLab.Project.Milestone-class.html
 gitlab3.GitLab.Project.Milestone.save	gitlab3.GitLab.Project.Milestone-class.html#save
 gitlab3.GitLab.Project.Snippet	gitlab3.GitLab.Project.Snippet-class.html
-gitlab3.GitLab.Project.Snippet.Note	gitlab3.GitLab.Project.Snippet.Note-class.html
-gitlab3.GitLab.Project.Snippet.notes	gitlab3.GitLab.Project.Snippet-class.html#notes
 gitlab3.GitLab.Project.Snippet.get_raw	gitlab3.GitLab.Project.Snippet-class.html#get_raw
+gitlab3.GitLab.Project.Snippet.raw	gitlab3.GitLab.Project.Snippet-class.html#raw
+gitlab3.GitLab.Project.Snippet.notes	gitlab3.GitLab.Project.Snippet-class.html#notes
+gitlab3.GitLab.Project.Snippet.Note	gitlab3.GitLab.Project.Snippet.Note-class.html
 gitlab3.GitLab.Project.Snippet.note	gitlab3.GitLab.Project.Snippet-class.html#note
 gitlab3.GitLab.Project.Snippet.find_note	gitlab3.GitLab.Project.Snippet-class.html#find_note
 gitlab3.GitLab.Project.Snippet.add_note	gitlab3.GitLab.Project.Snippet-class.html#add_note

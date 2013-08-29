@@ -182,15 +182,22 @@
 <td valign="top">
 <table class="link-index" width="100%" border="1">
 <tr>
-<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project.Commit-class.html">Commit</a><br />
+<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project.Issue-class.html#close">close()</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Project.Issue-class.html">Issue</a>)</span></td>
+<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project-class.html#commits">commits()</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Project-class.html">Project</a>)</span></td>
-<td width="33%" class="link-index"><a href="gitlab3.exceptions.ConnectionError-class.html">ConnectionError</a><br />
-<span class="index-where">(in&nbsp;<a href="gitlab3.exceptions-class.html">exceptions</a>)</span></td>
 <td width="33%" class="link-index"><a href="gitlab3.GitLab.CurrentUser-class.html">CurrentUser</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.GitLab-class.html">GitLab</a>)</span></td>
 </tr>
 <tr>
-<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project-class.html#commits">commits()</a><br />
+<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project.Commit-class.html">Commit</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Project-class.html">Project</a>)</span></td>
+<td width="33%" class="link-index"><a href="gitlab3.exceptions.ConnectionError-class.html">ConnectionError</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3.exceptions-class.html">exceptions</a>)</span></td>
+<td width="33%" class="link-index">&nbsp;</td>
+</tr>
+<tr>
+<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project-class.html#commit">commit()</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Project-class.html">Project</a>)</span></td>
 <td width="33%" class="link-index"><a href="gitlab3.GitLab-class.html#current_user">current_user()</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.GitLab-class.html">GitLab</a>)</span></td>
@@ -254,7 +261,8 @@
 <span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Team.Member-class.html">Member</a>)</span></td>
 <td width="33%" class="link-index"><a href="gitlab3.GitLab.Team-class.html#delete_project">delete_project()</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Team-class.html">Team</a>)</span></td>
-<td width="33%" class="link-index">&nbsp;</td>
+<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project.Commit-class.html#diff">diff()</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Project.Commit-class.html">Commit</a>)</span></td>
 </tr>
 <tr>
 <td width="33%" class="link-index"><a href="gitlab3.GitLab.Team.Project-class.html#delete">delete()</a><br />
@@ -369,6 +377,14 @@
 <tr>
 <td width="33%" class="link-index"><a href="gitlab3.GitLab.Project-class.html#get_blob">get_blob()</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Project-class.html">Project</a>)</span></td>
+<td width="33%" class="link-index"><a href="gitlab3.GitLab-class.html">GitLab</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3-module.html">gitlab3</a>)</span></td>
+<td width="33%" class="link-index"><a href="gitlab3.GitLab.Group-class.html">Group</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3.GitLab-class.html">GitLab</a>)</span></td>
+</tr>
+<tr>
+<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project.Commit-class.html#get_diff">get_diff()</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Project.Commit-class.html">Commit</a>)</span></td>
 <td width="33%" class="link-index"><a href="gitlab3-module.html">gitlab3</a></td>
 <td width="33%" class="link-index"><a href="gitlab3.GitLab-class.html#group">group()</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.GitLab-class.html">GitLab</a>)</span></td>
@@ -380,13 +396,6 @@
 <span class="index-where">(in&nbsp;<a href="gitlab3.exceptions-class.html">exceptions</a>)</span></td>
 <td width="33%" class="link-index"><a href="gitlab3.GitLab-class.html#groups">groups()</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.GitLab-class.html">GitLab</a>)</span></td>
-</tr>
-<tr>
-<td width="33%" class="link-index"><a href="gitlab3.GitLab-class.html">GitLab</a><br />
-<span class="index-where">(in&nbsp;<a href="gitlab3-module.html">gitlab3</a>)</span></td>
-<td width="33%" class="link-index"><a href="gitlab3.GitLab.Group-class.html">Group</a><br />
-<span class="index-where">(in&nbsp;<a href="gitlab3.GitLab-class.html">GitLab</a>)</span></td>
-<td width="33%" class="link-index">&nbsp;</td>
 </tr>
 </table>
 </td></tr>
@@ -541,14 +550,20 @@
 <td valign="top">
 <table class="link-index" width="100%" border="1">
 <tr>
+<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project.Snippet-class.html#raw">raw()</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Project.Snippet-class.html">Snippet</a>)</span></td>
 <td width="33%" class="link-index"><a href="gitlab3.exceptions.RequestNotSupported-class.html">RequestNotSupported</a><br />
-<span class="index-where">(in&nbsp;<a href="gitlab3.exceptions-class.html">exceptions</a>)</span></td>
-<td width="33%" class="link-index"><a href="gitlab3.exceptions.ResourceConflict-class.html">ResourceConflict</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.exceptions-class.html">exceptions</a>)</span></td>
 <td width="33%" class="link-index"><a href="gitlab3.exceptions.ResourceNotFound-class.html">ResourceNotFound</a><br />
 <span class="index-where">(in&nbsp;<a href="gitlab3.exceptions-class.html">exceptions</a>)</span></td>
 </tr>
-<tr><td class="link-index">&nbsp;</td><td class="link-index">&nbsp;</td><td class="link-index">&nbsp;</td></tr>
+<tr>
+<td width="33%" class="link-index"><a href="gitlab3.GitLab.Project.Issue-class.html#reopen">reopen()</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3.GitLab.Project.Issue-class.html">Issue</a>)</span></td>
+<td width="33%" class="link-index"><a href="gitlab3.exceptions.ResourceConflict-class.html">ResourceConflict</a><br />
+<span class="index-where">(in&nbsp;<a href="gitlab3.exceptions-class.html">exceptions</a>)</span></td>
+<td width="33%" class="link-index">&nbsp;</td>
+</tr>
 </table>
 </td></tr>
 <tr valign="top"><td valign="top" width="1%"><h2 class="epydoc"><a name="S">S</a></h2></td>
@@ -734,7 +749,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Mon Aug 26 22:22:12 2013
+    Generated by Epydoc 3.0.1 on Wed Aug 28 20:56:41 2013
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
