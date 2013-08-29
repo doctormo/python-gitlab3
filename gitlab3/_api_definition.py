@@ -48,7 +48,7 @@ class APIDefinition(object):
 
 class ExtraActionDefinition(object):
     """Definition of a "non-standard" function"""
-    url = None
+    url = ''
     url_params = []
     required_params = []
     optional_params = []
@@ -84,7 +84,7 @@ class Group(APIDefinition):
 
     class TransferProjectAction(ExtraActionDefinition):
         """gl.Group.transfer_project(project_id)"""
-        url = '/groups/:id/projects/:project_id'
+        url = '/projects/:project_id'
         method = _HTTP_POST
         url_params = [
             'project_id',
@@ -101,7 +101,6 @@ class SystemHook(APIDefinition):
 
     class TestAction(ExtraActionDefinition):
         """gl.Hook.test()"""
-        url = '/hooks/:id'
         method = _HTTP_GET
     extra_actions = [ TestAction ]
 
@@ -307,7 +306,7 @@ class Project(APIDefinition):
 
         class PostCommentAction(ExtraActionDefinition):
             """gl.Project.MergeRequest.post_comment(note)"""
-            url = '/merge_request/:merge_request_id/comments'
+            url = '/comments'
             method = _HTTP_POST
             required_args = [
                 'note',
