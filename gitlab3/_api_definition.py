@@ -417,6 +417,7 @@ class User(APIDefinition):
 
 
 class Team(APIDefinition):
+    url = '/user_teams/:id'
     actions =  [ _LIST, _GET, _ADD ]
     required_params = [
         'name',
