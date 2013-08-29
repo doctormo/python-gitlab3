@@ -339,12 +339,14 @@ class Project(APIDefinition):
             'lifetime',
         ]
 
-        class GetRawAction(ExtraActionDefinition):
-            """gl.Project.Snippet.get_raw()"""
-            url = '/snippets/:snippet_id/raw'
+        class RawAction(ExtraActionDefinition):
+            """gl.Project.Snippet.raw()"""
+            url = '/raw'
             method = _HTTP_GET
+        class GetRawAction(RawAction):
+            pass
 
-        extra_actions = [ GetRawAction ]
+        extra_actions = [ RawAction, GetRawAction ]
         sub_apis = [ Note ]
 
     class Tag(APIDefinition):
