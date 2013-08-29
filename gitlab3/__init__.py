@@ -323,7 +323,7 @@ class _GitLabAPI(object):
         for key, val in data.iteritems():
             if type(val) == dict:
                 self._convert_dates(val)
-            if self._date_fields.get(key):
+            if self._date_fields.get(key) and val:
                 data[key] = self._convert_gitlab_date(val)
 
     def _convert_gitlab_date(self, datetime_str):
