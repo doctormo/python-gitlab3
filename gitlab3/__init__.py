@@ -408,8 +408,13 @@ class _GitLabAPI(object):
     def _request(self, request_fn, api_url, addl_keys, data):
         url = self._get_url(api_url, addl_keys)
         #print "%s %s, data=%s" % (request_fn.__name__.upper(), url, str(data))
+        kwargs = {}
+        if self._ssl_verify is not None:
+            kwargs['verify'] = self._ssl_verify
+        if self._ssl_cert is not None:
+            kwargs['cert'] = self._ssl_cert
         try:
-            r = request_fn(url, headers=self._headers, data=data)
+            r = request_fn(url, headers=self._headers, data=data,**kwargs)
         except requests.exceptions.RequestException:
             msg = "'%s' request to '%s' failed" % (request_fn.__name__, url)
             raise exceptions.ConnectionError(msg)
@@ -427,10 +432,12 @@ class _GitLabAPI(object):
 class GitLab(_GitLabAPI):
     """A GitLab API connection."""
 
-    def __init__(self, gitlab_url, token=None, convert_dates=True):
+    def __init__(self, gitlab_url, token=None, convert_dates=True,ssl_verify=None,ssl_cert=None):
         setattr(_GitLabAPI, '_base_url', gitlab_url + "/api/v3")
         setattr(_GitLabAPI, '_headers', {'PRIVATE-TOKEN': token})
         setattr(_GitLabAPI, '_convert_dates_enabled', convert_dates)
+        setattr(_GitLabAPI, '_ssl_verify',ssl_verify)
+        setattr(_GitLabAPI, '_ssl_cert',ssl_cert)
 
         for sub_api in _GitLabAPIDefinition.sub_apis:
             cls = _add_api(sub_api, self)
