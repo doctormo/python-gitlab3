@@ -429,13 +429,11 @@ class GitLab(_GitLabAPI):
     """A GitLab API connection."""
 
     def __init__(self, gitlab_url, token=None, convert_dates=True,
-                 ssl_verify=None, ssl_cert=None):
+                 ssl_verify=True, ssl_cert=None):
         setattr(_GitLabAPI, '_base_url', gitlab_url + "/api/v3")
         setattr(_GitLabAPI, '_headers', {'PRIVATE-TOKEN': token})
         setattr(_GitLabAPI, '_convert_dates_enabled', convert_dates)
-        requests_kwargs = {}
-        if ssl_verify is not None:
-            requests_kwargs['verify'] = ssl_verify
+        requests_kwargs = { 'verify': ssl_verify }
         if ssl_cert is not None:
             requests_kwargs['cert'] = ssl_cert
         setattr(_GitLabAPI, '_requests_kwargs', requests_kwargs)
