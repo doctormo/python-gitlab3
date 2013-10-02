@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='gitlab3',
-    version='0.4.1',
+    version='0.4.2',
     license='LGPLv3',
     description='GitLab API v3 Python Wrapper.',
     long_description='A complete Python client/wrapper for GitLab API v3',
