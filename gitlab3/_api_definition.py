@@ -465,8 +465,8 @@ class GitLab(APIDefinition):
                 project_data = extra_action_fn(*args, **kwargs)
                 return gitlab3.Project(parent, project_data)
             return wrapped
-    class FindProjectByNameAction(ExtraActionDefinition):
-        """gl.find_project_by_name(query)"""
+    class FindProjectsByNameAction(ExtraActionDefinition):
+        """gl.find_projects_by_name(query)"""
         url = '/projects/search/:query'
         method = _HTTP_GET
         optional_params = [
@@ -485,7 +485,7 @@ class GitLab(APIDefinition):
                 return ret
             return wrapped
 
-    extra_actions = [ AddProjectForUserAction, FindProjectByNameAction ]
+    extra_actions = [ AddProjectForUserAction, FindProjectsByNameAction ]
 
     sub_apis = [
         CurrentUser,

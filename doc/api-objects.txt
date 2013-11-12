@@ -16,8 +16,8 @@ gitlab3.GitLab.add_system_hook	gitlab3.GitLab-class.html#add_system_hook
 gitlab3.GitLab.Issue	gitlab3.GitLab.Issue-class.html
 gitlab3.GitLab.__init__	gitlab3.GitLab-class.html#__init__
 gitlab3.GitLab.group	gitlab3.GitLab-class.html#group
+gitlab3.GitLab.find_projects_by_name	gitlab3.GitLab-class.html#find_projects_by_name
 gitlab3.GitLab.delete_group	gitlab3.GitLab-class.html#delete_group
-gitlab3.GitLab.find_project_by_name	gitlab3.GitLab-class.html#find_project_by_name
 gitlab3.GitLab.issues	gitlab3.GitLab-class.html#issues
 gitlab3.GitLab.current_user	gitlab3.GitLab-class.html#current_user
 gitlab3.GitLab.update_user	gitlab3.GitLab-class.html#update_user
