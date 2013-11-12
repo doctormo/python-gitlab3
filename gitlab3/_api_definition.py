@@ -300,9 +300,9 @@ class Project(APIDefinition):
         required_params = [
             'source_branch',
             'target_branch',
-            'assignee_id', # TODO: is this required or not?
             'title',
         ]
+        optional_params = [ 'assignee_id' ]
 
         class PostCommentAction(ExtraActionDefinition):
             """gl.Project.MergeRequest.post_comment(note)"""

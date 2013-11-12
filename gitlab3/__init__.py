@@ -141,10 +141,11 @@ def _add_find_fn(api, name, parent):
 
 def _add_get_fn(api, name, parent):
     """Create a <PARENT_API>.get_<name>() function"""
+    fixed_url = api._q_url.replace('merge_requests', 'merge_request')
     def fn(key=[], **kwargs):
         if key != []:
             key = [key]
-        data = parent._get(api._q_url, addl_keys=key, data=kwargs)
+        data = parent._get(fixed_url, addl_keys=key, data=kwargs)
         ret = api(parent, data)
         return ret
     setattr(parent, 'get_' + name, fn)
@@ -181,10 +182,11 @@ def _add_create_fn(api, api_definition, parent):
 
 def _add_edit_fn(api, name, parent):
     """Create <PARENT_API>.update_name(obj) and <API>.save() functions"""
+    fixed_url = api._q_url.replace('merge_requests', 'merge_request')
     def parent_fn(obj):
         return obj.save()
     def self_fn(self):
-        return self._put(api._q_url, data=self._get_data())
+        return self._put(fixed_url, data=self._get_data())
     setattr(parent, 'update_' + name, parent_fn)
     setattr(api, 'save', self_fn)
 
@@ -219,6 +221,7 @@ def _add_extra_fn(api, action_def, parent=None):
     url += action_def.url
     req_fn = _get_http_request_fn(api, http_method)
     num_req_params = len(url_params) + len(required_params) + 1  # + _self
+    url = url.replace('merge_requests', 'merge_request')
 
     def fn(*args, **kwargs):
         if len(args) != num_req_params:
