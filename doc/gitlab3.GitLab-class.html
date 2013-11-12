@@ -290,6 +290,23 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a name="delete_group"></a><span class="summary-sig-name">delete_group</span>(<span class="summary-sig-arg">group</span>)</span><br />
+      Equivalent to <i>group</i>.delete()</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="gitlab3.GitLab-class.html#system_hooks" class="summary-sig-name">system_hooks</a>(<span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>)</span><br />
@@ -444,6 +461,23 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a name="delete_project"></a><span class="summary-sig-name">delete_project</span>(<span class="summary-sig-arg">project</span>)</span><br />
+      Equivalent to <i>project</i>.delete()</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="gitlab3.GitLab-class.html#users" class="summary-sig-name">users</a>(<span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>)</span><br />
@@ -510,7 +544,9 @@
         <span class="summary-sig-arg">projects_limit</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">extern_uid</span>=<span class="summary-sig-default">None</span>,
         <span class="summary-sig-arg">provider</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">bio</span>=<span class="summary-sig-default">None</span>)</span><br />
+        <span class="summary-sig-arg">bio</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">admin</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">can_create_group</span>=<span class="summary-sig-default">None</span>)</span><br />
       Add a new user to GitLab</td>
           <td align="right" valign="top">
             
@@ -661,10 +697,32 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a name="find_project_by_name"></a><span class="summary-sig-name">find_project_by_name</span>(<span class="summary-sig-arg">query</span>,
+        <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Use GitLab's API for finding projects by name (more efficient than 
+      <i>find_project(name='&lt;name&gt;')</i>).</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a href="gitlab3.GitLab-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">gitlab_url</span>,
         <span class="summary-sig-arg">token</span>=<span class="summary-sig-default">None</span>,
-        <span class="summary-sig-arg">convert_dates</span>=<span class="summary-sig-default">True</span>)</span><br />
+        <span class="summary-sig-arg">convert_dates</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">ssl_verify</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ssl_cert</span>=<span class="summary-sig-default">None</span>)</span><br />
       Initialize a GitLab connection and optionally supply auth token.</td>
           <td align="right" valign="top">
             
@@ -1139,7 +1197,9 @@
         <span class="sig-arg">projects_limit</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">extern_uid</span>=<span class="sig-default">None</span>,
         <span class="sig-arg">provider</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">bio</span>=<span class="sig-default">None</span>)</span>
+        <span class="sig-arg">bio</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">admin</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">can_create_group</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     >&nbsp;
@@ -1253,9 +1313,11 @@
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">url</span>,
+        <span class="sig-arg">gitlab_url</span>,
         <span class="sig-arg">token</span>=<span class="sig-default">None</span>,
-        <span class="sig-arg">convert_dates</span>=<span class="sig-default">True</span>)</span>
+        <span class="sig-arg">convert_dates</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">ssl_verify</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ssl_cert</span>=<span class="sig-default">None</span>)</span>
     <br /><em class="fname">(Constructor)</em>
   </h3>
   </td><td align="right" valign="top"
@@ -1265,7 +1327,9 @@
   
   <p>Initialize a GitLab connection and optionally supply auth token. 
   <i>convert_dates</i> can be set to <i>False</i> to disable automatic 
-  conversion of date strings to <i>datetime</i> objects.</p>
+  conversion of date strings to <i>datetime</i> objects. <i>ssl_verify</i> 
+  and <i>ssl_cert</i> are passed to python-requests as the <i>verify</i> 
+  and <i>cert</i> arguments, respectively.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -1324,7 +1388,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Aug 28 20:56:41 2013
+    Generated by Epydoc 3.0.1 on Tue Nov 12 15:03:49 2013
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -1,4 +1,5 @@
 gitlab3	gitlab3-module.html
+gitlab3.ACCESS_LEVEL_OWNER	gitlab3-module.html#ACCESS_LEVEL_OWNER
 gitlab3.ACCESS_LEVEL_GUEST	gitlab3-module.html#ACCESS_LEVEL_GUEST
 gitlab3.__package__	gitlab3-module.html#__package__
 gitlab3.ACCESS_LEVEL_REPORTER	gitlab3-module.html#ACCESS_LEVEL_REPORTER
@@ -9,11 +10,14 @@ gitlab3.GitLab.find_system_hook	gitlab3.GitLab-class.html#find_system_hook
 gitlab3.GitLab.Group	gitlab3.GitLab.Group-class.html
 gitlab3.GitLab.delete_user	gitlab3.GitLab-class.html#delete_user
 gitlab3.GitLab.find_group	gitlab3.GitLab-class.html#find_group
+gitlab3.GitLab.delete_project	gitlab3.GitLab-class.html#delete_project
 gitlab3.GitLab.SystemHook	gitlab3.GitLab.SystemHook-class.html
 gitlab3.GitLab.add_system_hook	gitlab3.GitLab-class.html#add_system_hook
 gitlab3.GitLab.Issue	gitlab3.GitLab.Issue-class.html
 gitlab3.GitLab.__init__	gitlab3.GitLab-class.html#__init__
 gitlab3.GitLab.group	gitlab3.GitLab-class.html#group
+gitlab3.GitLab.delete_group	gitlab3.GitLab-class.html#delete_group
+gitlab3.GitLab.find_project_by_name	gitlab3.GitLab-class.html#find_project_by_name
 gitlab3.GitLab.issues	gitlab3.GitLab-class.html#issues
 gitlab3.GitLab.current_user	gitlab3.GitLab-class.html#current_user
 gitlab3.GitLab.update_user	gitlab3.GitLab-class.html#update_user
@@ -30,7 +34,6 @@ gitlab3.GitLab.projects	gitlab3.GitLab-class.html#projects
 gitlab3.GitLab.delete_system_hook	gitlab3.GitLab-class.html#delete_system_hook
 gitlab3.GitLab.find_project	gitlab3.GitLab-class.html#find_project
 gitlab3.GitLab.find_team	gitlab3.GitLab-class.html#find_team
-gitlab3.GitLab.add_user	gitlab3.GitLab-class.html#add_user
 gitlab3.GitLab.find_user	gitlab3.GitLab-class.html#find_user
 gitlab3.GitLab.teams	gitlab3.GitLab-class.html#teams
 gitlab3.GitLab.project	gitlab3.GitLab-class.html#project
@@ -38,8 +41,9 @@ gitlab3.GitLab.add_group	gitlab3.GitLab-class.html#add_group
 gitlab3.GitLab.User	gitlab3.GitLab.User-class.html
 gitlab3.GitLab.team	gitlab3.GitLab-class.html#team
 gitlab3.GitLab.login	gitlab3.GitLab-class.html#login
-gitlab3.GitLab.CurrentUser	gitlab3.GitLab.CurrentUser-class.html
 gitlab3.GitLab.find_issue	gitlab3.GitLab-class.html#find_issue
+gitlab3.GitLab.CurrentUser	gitlab3.GitLab.CurrentUser-class.html
+gitlab3.GitLab.add_user	gitlab3.GitLab-class.html#add_user
 gitlab3.GitLab.CurrentUser	gitlab3.GitLab.CurrentUser-class.html
 gitlab3.GitLab.CurrentUser.SSHKey	gitlab3.GitLab.CurrentUser.SSHKey-class.html
 gitlab3.GitLab.CurrentUser.delete_ssh_key	gitlab3.GitLab.CurrentUser-class.html#delete_ssh_key
@@ -50,7 +54,15 @@ gitlab3.GitLab.CurrentUser.ssh_keys	gitlab3.GitLab.CurrentUser-class.html#ssh_ke
 gitlab3.GitLab.CurrentUser.SSHKey	gitlab3.GitLab.CurrentUser.SSHKey-class.html
 gitlab3.GitLab.CurrentUser.SSHKey.delete	gitlab3.GitLab.CurrentUser.SSHKey-class.html#delete
 gitlab3.GitLab.Group	gitlab3.GitLab.Group-class.html
+gitlab3.GitLab.Group.find_member	gitlab3.GitLab.Group-class.html#find_member
 gitlab3.GitLab.Group.transfer_project	gitlab3.GitLab.Group-class.html#transfer_project
+gitlab3.GitLab.Group.delete_member	gitlab3.GitLab.Group-class.html#delete_member
+gitlab3.GitLab.Group.add_member	gitlab3.GitLab.Group-class.html#add_member
+gitlab3.GitLab.Group.Member	gitlab3.GitLab.Group.Member-class.html
+gitlab3.GitLab.Group.members	gitlab3.GitLab.Group-class.html#members
+gitlab3.GitLab.Group.delete	gitlab3.GitLab.Group-class.html#delete
+gitlab3.GitLab.Group.Member	gitlab3.GitLab.Group.Member-class.html
+gitlab3.GitLab.Group.Member.delete	gitlab3.GitLab.Group.Member-class.html#delete
 gitlab3.GitLab.Issue	gitlab3.GitLab.Issue-class.html
 gitlab3.GitLab.Project	gitlab3.GitLab.Project-class.html
 gitlab3.GitLab.Project.find_member	gitlab3.GitLab.Project-class.html#find_member
@@ -114,6 +126,7 @@ gitlab3.GitLab.Project.update_milestone	gitlab3.GitLab.Project-class.html#update
 gitlab3.GitLab.Project.unprotect_branch	gitlab3.GitLab.Project-class.html#unprotect_branch
 gitlab3.GitLab.Project.merge_request	gitlab3.GitLab.Project-class.html#merge_request
 gitlab3.GitLab.Project.DeployKey	gitlab3.GitLab.Project.DeployKey-class.html
+gitlab3.GitLab.Project.delete	gitlab3.GitLab.Project-class.html#delete
 gitlab3.GitLab.Project.wall_notes	gitlab3.GitLab.Project-class.html#wall_notes
 gitlab3.GitLab.Project.Hook	gitlab3.GitLab.Project.Hook-class.html
 gitlab3.GitLab.Project.add_deploy_key	gitlab3.GitLab.Project-class.html#add_deploy_key

@@ -66,6 +66,32 @@
   href="http://github.com/gitlabhq/gitlabhq/blob/master/doc/api/groups.md" 
   target="_top">http://github.com/gitlabhq/gitlabhq/blob/master/doc/api/groups.md</a></p>
 
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="gitlab3.GitLab.Group.Member-class.html" class="summary-name">Member</a><br />
+      A group member.
+    </td>
+  </tr>
+</table>
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -89,6 +115,23 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a name="delete"></a><span class="summary-sig-name">delete</span>()</span><br />
+      Delete this Group</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a name="transfer_project"></a><span class="summary-sig-name">transfer_project</span>(<span class="summary-sig-arg">project_id</span>)</span><br />
       Transfer a project to this group namespace.</td>
           <td align="right" valign="top">
@@ -100,7 +143,173 @@
       
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab3.GitLab.Group-class.html#members" class="summary-sig-name">members</a>(<span class="summary-sig-arg">limit</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">page</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">per_page</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a list of Group members.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab3.GitLab.Group-class.html#find_member" class="summary-sig-name">find_member</a>(<span class="summary-sig-arg">find_all</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">cached</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Find the first matching Member whose properties match all of the key,
+      value pairs given in the arguments.</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="gitlab3.GitLab.Group-class.html#add_member" class="summary-sig-name">add_member</a>(<span class="summary-sig-arg">user_id</span>,
+        <span class="summary-sig-arg">access_level</span>)</span><br />
+      Add a new member to this Group</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="delete_member"></a><span class="summary-sig-name">delete_member</span>(<span class="summary-sig-arg">member</span>)</span><br />
+      Equivalent to <i>member</i>.delete()</td>
+          <td align="right" valign="top">
+            
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
 </table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="members"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">members</span>(<span class="sig-arg">limit</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">page</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">per_page</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a list of Group members.</p>
+  <p><i>limit</i> can be given to specify the maximum list size.</p>
+  <p><i>page</i> and <i>per_page</i> can be used for pagination.</p>
+  <p><i>limit</i> should not be specified with either <i>page</i> or 
+  <i>per_page</i>. If it is, <i>limit</i> takes precedence.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="find_member"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">find_member</span>(<span class="sig-arg">find_all</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">cached</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Find the first matching Member whose properties match all of the key, 
+  value pairs given in the arguments.</p>
+  <p>If <i>find_all</i> is true, a list of all matching members will be 
+  returned. If a <i>cached</i> list is not given, the list to search will 
+  be queried from the server each time this is called.</p>
+  <p>Searching is done via an unoptimized, inefficient o(n) search.</p>
+  <p>All arguments must be named.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_member"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_member</span>(<span class="sig-arg">user_id</span>,
+        <span class="sig-arg">access_level</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    >&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a new member to this Group</p>
+  <p>On success, the newly created object is returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
@@ -132,7 +341,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Aug 28 20:56:41 2013
+    Generated by Epydoc 3.0.1 on Tue Nov 12 15:03:49 2013
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
