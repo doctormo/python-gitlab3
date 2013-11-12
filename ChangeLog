@@ -1,3 +1,6 @@
+v0.5.1
+    [*] Rename find_project_by_name to find_projects_by_name before hitting PyPI
+
 v0.5.0
     [*] Support GitLab 6.2 API changes
         [*] Added GitLab.find_project_by_name()
