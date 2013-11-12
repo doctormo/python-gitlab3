@@ -463,8 +463,27 @@ class GitLab(APIDefinition):
                 project_data = extra_action_fn(*args, **kwargs)
                 return gitlab3.Project(parent, project_data)
             return wrapped
+    class FindProjectByNameAction(ExtraActionDefinition):
+        """gl.find_project_by_name(query)"""
+        url = '/projects/search/:query'
+        method = _HTTP_GET
+        optional_params = [
+            'per_page',
+            'page',
+        ]
+        @staticmethod
+        def wrapper(extra_action_fn, parent):
+            def wrapped(*args, **kwargs):
+                """Return a list of Projects"""
+                import gitlab3
+                ret = []
+                projects = extra_action_fn(*args, **kwargs)
+                for project_data in projects:
+                    ret.append(gitlab3.Project(parent, project_data))
+                return ret
+            return wrapped
 
-    extra_actions = [ AddProjectForUserAction ]
+    extra_actions = [ AddProjectForUserAction, FindProjectByNameAction ]
 
     sub_apis = [
         CurrentUser,

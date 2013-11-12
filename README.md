@@ -136,4 +136,7 @@ gl.find_user(email='user@example.com')
 
 project = gl.project(1)
 project.find_member(username='user')
+
+# The GitLab API has support for more efficient searching of projects by name:
+gl.find_project_by_name('name_query')  # Server-side search
 ```
