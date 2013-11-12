@@ -129,7 +129,7 @@ class Note(APIDefinition):
 
 class Project(APIDefinition):
     url = '/projects/:id'
-    actions = [ _LIST, _GET, _ADD ]
+    actions = [ _LIST, _GET, _ADD, _DELETE ]
     required_params = [
         'name',
     ]
