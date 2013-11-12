@@ -49,7 +49,6 @@ class APIDefinition(object):
 class ExtraActionDefinition(object):
     """Definition of a "non-standard" function"""
     url = ''
-    url_params = []
     required_params = []
     optional_params = []
 
@@ -150,20 +149,14 @@ class Project(APIDefinition):
         """gl.Project.fork_from(forked_from_id)"""
         url = '/fork/:forked_from_id'
         method = _HTTP_POST
-        url_params = [
-            'forked_from_id',
-        ]
     class DeleteForkAction(ExtraActionDefinition):
         """gl.Project.delete_fork()"""
         url = '/fork'
         method = _HTTP_DELETE
     class GetBlobAction(ExtraActionDefinition):
         """gl.Project.get_blob()"""
-        url = '/repository/commits/:sha/blob'
+        url = '/repository/commits/:sha_or_ref_name/blob'
         method = _HTTP_GET
-        url_params = [
-            'sha_or_ref_name',
-        ]
         required_params = [
             'filepath',
         ]
@@ -171,9 +164,6 @@ class Project(APIDefinition):
         """gl.Project.protect_branch()"""
         url = '/repository/branches/:branch/protect'
         method = _HTTP_PUT
-        url_params = [
-            'branch',  # GitLab API is branch name
-        ]
         @staticmethod
         def wrapper(extra_action_fn, parent):
             """Accept a Branch object instead of a branch name"""
@@ -189,9 +179,6 @@ class Project(APIDefinition):
         """gl.Project.unprotect_branch()"""
         url = '/repository/branches/:branch/unprotect'
         method = _HTTP_PUT
-        url_params = [
-            'branch',  # GitLab API is branch name
-        ]
         @staticmethod
         def wrapper(extra_action_fn, parent):
             """Accept a Branch object instead of a branch name"""
@@ -447,9 +434,6 @@ class GitLab(APIDefinition):
         """gl.add_project_for_user(user_id, name)"""
         url = '/projects/user/:user_id'
         method = _HTTP_POST
-        url_params = [
-            'user_id',
-        ]
         required_params = [
             'name',
         ]

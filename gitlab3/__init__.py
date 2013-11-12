@@ -215,7 +215,7 @@ def _get_http_request_fn(api, method):
 def _add_extra_fn(api, action_def, parent=None):
     required_params = action_def.required_params
     # url_params are required params, but get passed as part of url
-    url_params = action_def.url_params
+    url_params = re.findall(':(\w+)', action_def.url)
     http_method = action_def.method
     url = api._q_url  # XXX: do any extra fns need unqualified url?
     url += action_def.url
