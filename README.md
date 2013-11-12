@@ -45,6 +45,7 @@ for project in gl.projects(page=1, per_page=10):  # pagination
 #
 gl.get_current_user(sudo='other_user')  # => 'other_user' CurrentUser object
 gl.projects(sudo=2)  # => list of user 2's projects
+# Alternatively, a 'with' statement can be used as follows:
 with gl.sudo('other_user'):
     gl.get_current_user()  # => 'other_user' CurrentUser object
     gl.projects()  # => list of 'other_users's projects
@@ -138,5 +139,5 @@ project = gl.project(1)
 project.find_member(username='user')
 
 # The GitLab API has support for more efficient searching of projects by name:
-gl.find_project_by_name('name_query')  # Server-side search
+gl.find_projects_by_name('name_query')  # Server-side search
 ```
