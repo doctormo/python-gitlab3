@@ -410,6 +410,8 @@ class User(APIDefinition):
         'extern_uid',
         'provider',
         'bio',
+        'admin',
+        'can_create_group',
     ]
 
     class SSHKey(SSHKey):
