@@ -38,6 +38,16 @@ for event in gl.project(1).events(limit=10):  # 10 most recent events
 for project in gl.projects(page=1, per_page=10):  # pagination
     print project.issues(limit=1)[0].title  # (assume issue[0] exists...)
 
+#
+# Sudo usage examples (GitLab v6.1+)
+# All functions accept an optional, undocumented, 'sudo' argument
+# specifiying a username or user id to act as.
+#
+gl.get_current_user(sudo='other_user')  # => 'other_user' CurrentUser object
+gl.projects(sudo=2)  # => list of user 2's projects
+with gl.sudo('other_user'):
+    gl.get_current_user()  # => 'other_user' CurrentUser object
+    gl.projects()  # => list of 'other_users's projects
 
 #
 # Example usage involving users

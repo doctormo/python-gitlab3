@@ -133,8 +133,14 @@ def _add_find_fn(api, name, parent):
             del kwargs['find_all']
         except KeyError:
             find_all = False
+        try:
+            query_data = {}
+            query_data['sudo'] = kwargs['sudo']
+            del kwargs['sudo']
+        except KeyError:
+            pass
         if not objects:
-            objects = _query_list(api, parent, {})
+            objects = _query_list(api, parent, query_data)
 
         return _find_matches(objects, kwargs, find_all)
     setattr(parent, 'find_' + name, fn)
@@ -256,6 +262,8 @@ def _add_api(definition, parent):
     else:
         uq_url = parent._uq_url
     uq_url += re.sub(r'/\:.*', '', url)  # "unqualify" the url
+    # 'sudo' is an optional parameter for all functions
+    definition.optional_params.append('sudo')
 
     cls_attrs = {
         '_key_name': definition.key_name,
@@ -466,3 +474,14 @@ class GitLab(_GitLabAPI):
         headers = {'PRIVATE-TOKEN': ret['private_token']}
         setattr(_GitLabAPI, '_headers', headers)
         return True
+
+    class sudo:
+        """Alternative sudo usage. To be used with the 'with' statement"""
+        def __init__(self, username_or_id):
+            self.user = username_or_id
+        def __enter__(self):
+            headers = getattr(_GitLabAPI, '_headers')
+            headers['SUDO'] = self.user
+        def __exit__(self, type, value, traceback):
+            headers = getattr(_GitLabAPI, '_headers')
+            del headers['SUDO']
