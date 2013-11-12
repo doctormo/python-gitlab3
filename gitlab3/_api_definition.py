@@ -245,7 +245,7 @@ class Project(APIDefinition):
             @classmethod
             def wrapper(cls, extra_action_fn, parent):
                 def wrapped(self):
-                    extra_action_fn(self, state_event=cls.name())
+                    extra_action_fn(self, cls.name())
                     setattr(self, 'state', cls._state_after)
                 return wrapped
         class ReopenAction(CloseAction):
