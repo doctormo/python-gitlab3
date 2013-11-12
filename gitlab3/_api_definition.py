@@ -76,7 +76,7 @@ class CurrentUser(APIDefinition):
 
 class Group(APIDefinition):
     url = '/groups/:id'
-    actions = [ _LIST, _GET, _ADD ]
+    actions = [ _LIST, _GET, _ADD, _DELETE ]
     required_params = [
         'name',
         'path',
