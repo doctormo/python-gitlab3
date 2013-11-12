@@ -67,6 +67,15 @@ class SSHKey(APIDefinition):
     ]
 
 
+class Member(APIDefinition):
+    url = '/members/:user_id'
+    actions = [ _LIST, _GET, _ADD, _EDIT, _DELETE ]
+    required_params = [
+        'user_id',
+        'access_level',
+    ]
+
+
 class CurrentUser(APIDefinition):
     url = '/user'
     actions = [ _GET ]
@@ -81,6 +90,8 @@ class Group(APIDefinition):
         'path',
     ]
 
+    ####
+    # Extra Actions
     class TransferProjectAction(ExtraActionDefinition):
         """gl.Group.transfer_project(project_id)"""
         url = '/projects/:project_id'
@@ -89,6 +100,12 @@ class Group(APIDefinition):
             'project_id',
         ]
     extra_actions = [ TransferProjectAction ]
+
+    ###
+    # Sub APIs
+    class Member(Member):  # Group API has limited Member actions...
+        actions = [ _LIST, _ADD, _DELETE ]
+    sub_apis = [ Member ]
 
 
 class SystemHook(APIDefinition):
@@ -107,15 +124,6 @@ class SystemHook(APIDefinition):
 class Issue(APIDefinition):
     url = '/issues'
     actions = [ _LIST ]
-
-
-class Member(APIDefinition):
-    url = '/members/:user_id'
-    actions = [ _LIST, _GET, _ADD, _EDIT, _DELETE ]
-    required_params = [
-        'user_id',
-        'access_level',
-    ]
 
 
 class Note(APIDefinition):
