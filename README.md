@@ -86,7 +86,7 @@ tags = project.tags()
 member = project.add_member('user_id', gitlab3.ACCESS_LEVEL_GUEST)
 member.access_level = gitlab3.ACCESS_LEVEL_DEVELOPER
 member.save()  # or project.update_member(member)
-project.delete_member('user_id')
+project.delete_member(member)
 
 # Issues
 issues = project.issues(limit=10)

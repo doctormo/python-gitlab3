@@ -191,6 +191,8 @@ def _add_edit_fn(api, name, parent):
     """Create <PARENT_API>.update_name(obj) and <API>.save() functions"""
     fixed_url = api._q_url.replace('merge_requests', 'merge_request')
     def parent_fn(obj):
+        if not isinstance(obj, api):
+            raise TypeError("Expected instance of %s" % api)
         return obj.save()
     def self_fn(self):
         return self._put(fixed_url, data=self._get_data())
@@ -201,6 +203,8 @@ def _add_edit_fn(api, name, parent):
 def _add_delete_fn(api, name, parent):
     """Create <PARENT_API>.delete_name(obj) and <API>.delete() functions"""
     def parent_fn(obj):
+        if not isinstance(obj, api):
+            raise TypeError("Expected instance of %s" % api)
         return obj.delete()
     def self_fn(self):
         return self._delete(api._q_url)
