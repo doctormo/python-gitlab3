@@ -1,3 +1,6 @@
+v0.5.2
+    [*] Support converting timestamps that include microseconds
+
 v0.5.1
     [*] Rename find_project_by_name to find_projects_by_name before hitting PyPI
 
@@ -12,7 +15,7 @@ v0.5.0
         [*] Added <group>.members()
         [*] Added <group>.add_member()
         [*] Added <group>.delete_member() and <group_member>.delete()
-    [*] Default ssl_verify to 'True' for clarity 
+    [*] Default ssl_verify to 'True' for clarity
     [*] Bugfix: Correct merge requests API (this GitLab API is not standard)
 
 v0.4.2

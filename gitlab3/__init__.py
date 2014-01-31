@@ -351,6 +351,8 @@ class _GitLabAPI(object):
         else:
             offset = datetime_str[-6:]
             datetime_str = datetime_str[:-6]
+        if re.search(r'\.[0-9]{3}$', datetime_str):
+            fmt += '.%f'  # microseconds are included
         dt = datetime.strptime(datetime_str, fmt)
         if not offset:
             return dt
