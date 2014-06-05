@@ -14,6 +14,7 @@ import re
 import requests
 from datetime import tzinfo, timedelta, datetime
 from math import ceil
+import urllib
 
 from . import exceptions
 from ._api_definition import GitLab as _GitLabAPIDefinition
@@ -427,6 +428,9 @@ class _GitLabAPI(object):
         url = self._get_url(api_url, addl_keys)
         #print "%s %s, data=%s" % (request_fn.__name__.upper(), url, str(data))
         try:
+            if request_fn == requests.get:
+              url = url + '?' + urllib.urlencode(data,doseq=True)
+              data=None
             r = request_fn(url, headers=self._headers, data=data,
                            **self._requests_kwargs)
         except requests.exceptions.RequestException:
