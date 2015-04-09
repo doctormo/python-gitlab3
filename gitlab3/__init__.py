@@ -80,7 +80,7 @@ def _add_list_fn(api, api_definition, parent):
             data['per_page'] = _MAX_PER_PAGE
             num_pages = int(ceil(float(limit) / _MAX_PER_PAGE))
             remainder = limit % _MAX_PER_PAGE
-            for i in xrange(1, num_pages+1):
+            for i in range(1, num_pages+1):
                 data['page'] = i
                 objs = parent._get(api._uq_url, data=data)
                 if remainder and i == num_pages:  # Final request
@@ -103,7 +103,7 @@ def _find_matches(objects, kwargs, find_all):
     for obj in objects:
         match = True
         # Match all supplied parameters
-        for param, val in kwargs.iteritems():
+        for param, val in kwargs.items():
             if not getattr(obj, param) == val:
                 match = False
                 break
@@ -178,7 +178,7 @@ def _add_create_fn(api, api_definition, parent):
             kwargs[param] = args[idx]
         idx += 1
         # Load kwargs with unnamed optional params
-        for i in xrange(idx, len(args)):
+        for i in range(idx, len(args)):
             kwargs[optional_params[i-idx]] = args[i]
 
         data = parent._post(api._uq_url, data=kwargs)
@@ -314,7 +314,7 @@ class _GitLabAPI(object):
             pass
         if self._convert_dates_enabled:
             self._convert_dates(json_data)
-        for key, val in json_data.iteritems():
+        for key, val in json_data.items():
             setattr(self, key, val)
         self._parent = parent
         self._data_keys = json_data.keys()
@@ -336,7 +336,7 @@ class _GitLabAPI(object):
             for item in data:
                 self._convert_dates(item)
             return
-        for key, val in data.iteritems():
+        for key, val in data.items():
             if type(val) == dict:
                 self._convert_dates(val)
             if self._date_fields.get(key) and val:
@@ -434,7 +434,7 @@ class _GitLabAPI(object):
             raise exceptions.ConnectionError(msg)
         self._check_status_code(r.status_code, url, data)
         try:
-            return json.loads(r.content)
+            return json.loads(r.content.decode('utf8'))
         except ValueError:  # XXX: assume we're returning plain text
             return r.content
 
