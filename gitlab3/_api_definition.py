@@ -205,6 +205,9 @@ class Project(APIDefinition):
         'token',
         'project_url'
       ]
+    class DeactivateGitlabCIAction(ExtraActionDefinition):
+      url = '/services/gitlab-ci'
+      method = _HTTP_DELETE
 
     extra_actions = [
         ForkFromAction,
