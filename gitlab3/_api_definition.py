@@ -216,6 +216,7 @@ class Project(APIDefinition):
         ProtectBranchAction,
         UnprotectBranchAction,
         SetGitlabCIAction,
+        DeactivateGitlabCIAction,
     ]
 
     ###
