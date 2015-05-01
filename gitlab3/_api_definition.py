@@ -143,6 +143,7 @@ class Project(APIDefinition):
     optional_params = [
         'description',
         'default_branch',
+        'namespace_id',
         'issues_enabled',
         'wall_enabled',
         'merge_requests_enabled',
