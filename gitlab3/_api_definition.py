@@ -141,6 +141,7 @@ class Project(APIDefinition):
         'name',
     ]
     optional_params = [
+        'namespace_id',
         'description',
         'default_branch',
         'issues_enabled',
