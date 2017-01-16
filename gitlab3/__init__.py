@@ -448,6 +448,8 @@ class GitLab(_GitLabAPI):
 
     def __init__(self, gitlab_url, token=None, convert_dates=True,
                  ssl_verify=True, ssl_cert=None):
+        if gitlab_url[-1:] == '/':
+            gitlab_url = gitlab_url[:-1]
         setattr(_GitLabAPI, '_base_url', gitlab_url + "/api/v3")
         setattr(_GitLabAPI, '_headers', {'PRIVATE-TOKEN': token})
         setattr(_GitLabAPI, '_convert_dates_enabled', convert_dates)
