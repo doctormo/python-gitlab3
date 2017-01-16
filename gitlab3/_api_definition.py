@@ -223,6 +223,19 @@ class Project(APIDefinition):
             'url',
         ]
 
+    class Label(APIDefinition):
+        url = '/labels'
+        # _DELETE requires ?id=:id which isn't something that works yet.
+        actions = [ _LIST, _ADD ]
+        required_params = [
+            'name',
+            'color',
+        ]
+        optional_params = [
+            'description',
+            'priority',
+        ]
+
     class Issue(APIDefinition):
         url = '/issues/:issue_id'
         actions = [ _LIST, _GET, _ADD, _EDIT ]
@@ -381,6 +394,7 @@ class Project(APIDefinition):
         DeployKey,
         Event,
         Hook,
+        Label,
         Issue,
         Member,
         MergeRequest,
