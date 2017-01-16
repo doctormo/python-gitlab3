@@ -198,6 +198,16 @@ class Project(APIDefinition):
                 except AttributeError:
                     pass
             return wrapped
+    class SetGitlabCIAction(ExtraActionDefinition):
+      url = '/services/gitlab-ci'
+      method = _HTTP_PUT
+      required_params = [
+        'token',
+        'project_url'
+      ]
+    class DeactivateGitlabCIAction(ExtraActionDefinition):
+      url = '/services/gitlab-ci'
+      method = _HTTP_DELETE
 
     extra_actions = [
         ForkFromAction,
@@ -205,6 +215,8 @@ class Project(APIDefinition):
         GetBlobAction,
         ProtectBranchAction,
         UnprotectBranchAction,
+        SetGitlabCIAction,
+        DeactivateGitlabCIAction,
     ]
 
     ###
