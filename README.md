@@ -1,9 +1,3 @@
-# IMPORTANT!
-This repo is outdated. Please use https://github.com/doctormo/python-gitlab3 instead.
-
-Martin Owens (@doctormo) has kindly taken over maintenance of this project.
-
-
 # python-gitlab3
 
 A Python wrapper for GitLab API v3.
