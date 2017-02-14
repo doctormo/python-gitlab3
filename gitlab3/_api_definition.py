@@ -169,6 +169,10 @@ class Project(APIDefinition):
         required_params = [
             'filepath',
         ]
+    class GetCommentsAction(ExtraActionDefinition):
+        """gl.Project.get_comments"""
+        url = '/repository/commits/:sha_or_ref_name/comments'
+        method = _HTTP_GET
     class ProtectBranchAction(ExtraActionDefinition):
         """gl.Project.protect_branch()"""
         url = '/repository/branches/:branch/protect'
@@ -214,6 +218,7 @@ class Project(APIDefinition):
         ForkFromAction,
         DeleteForkAction,
         GetBlobAction,
+        GetCommentsAction,
         ProtectBranchAction,
         UnprotectBranchAction,
         SetGitlabCIAction,
@@ -332,8 +337,12 @@ class Project(APIDefinition):
             required_args = [
                 'note',
             ]
+        class GetCommitsAction(ExtraActionDefinition):
+            """gl.Project.MergeRequest.get_commits()"""
+            url = '/commits'
+            method = _HTTP_GET
 
-        extra_actions = [ PostCommentAction ]
+        extra_actions = [ PostCommentAction, GetCommitsAction ]
         sub_apis = [ Note ]
 
     class Milestone(APIDefinition):
