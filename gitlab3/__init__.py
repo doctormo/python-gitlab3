@@ -345,7 +345,7 @@ class _GitLabAPI(object):
 
     def _convert_gitlab_date(self, datetime_str):
         """Convert GitLab datetime string to datetime object"""
-        fmt = '%Y-%m-%dT%H:%M:%S.%f'
+        fmt = '%Y-%m-%dT%H:%M:%S'
         offset = None
         if datetime_str.endswith('Z'):
             datetime_str = datetime_str[:-1]
