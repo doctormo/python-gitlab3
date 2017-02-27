@@ -214,6 +214,14 @@ class Project(APIDefinition):
       url = '/services/gitlab-ci'
       method = _HTTP_DELETE
 
+    class StarAction(ExtraActionDefinition):
+      url = '/star'
+      method = _HTTP_POST
+
+    class UnstarAction(ExtraActionDefinition):
+      url = '/star'
+      method = _HTTP_DELETE
+
     extra_actions = [
         ForkFromAction,
         DeleteForkAction,
@@ -223,6 +231,8 @@ class Project(APIDefinition):
         UnprotectBranchAction,
         SetGitlabCIAction,
         DeactivateGitlabCIAction,
+        StarAction,
+        UnstarAction,
     ]
 
     ###
