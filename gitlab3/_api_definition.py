@@ -491,7 +491,7 @@ class User(APIDefinition):
     ]
 
     class SSHKey(SSHKey):
-        actions = [ _ADD ]
+        actions = [ _LIST, _ADD, _DELETE ]
 
     sub_apis = [ SSHKey ]
 
