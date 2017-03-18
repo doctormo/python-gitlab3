@@ -214,6 +214,21 @@ class Project(APIDefinition):
       url = '/services/gitlab-ci'
       method = _HTTP_DELETE
 
+    class SetEmailsOnPush(ExtraActionDefinition):
+      url = '/services/emails-on-push'
+      method = _HTTP_PUT
+      optional_params = [
+        'recipients',
+        'disable_diffs',
+        'send_from_committer_email',
+      ]
+    class GetEmailsOnPush(ExtraActionDefinition):
+      url = '/services/emails-on-push'
+      method = _HTTP_GET
+    class DeactivateEmailsOnPush(ExtraActionDefinition):
+      url = '/services/emails-on-push'
+      method = _HTTP_DELETE
+
     class StarAction(ExtraActionDefinition):
       url = '/star'
       method = _HTTP_POST
@@ -230,7 +245,10 @@ class Project(APIDefinition):
         ProtectBranchAction,
         UnprotectBranchAction,
         SetGitlabCIAction,
+        GetEmailsOnPush,
         DeactivateGitlabCIAction,
+        SetEmailsOnPush,
+        DeactivateEmailsOnPush,
         StarAction,
         UnstarAction,
     ]
