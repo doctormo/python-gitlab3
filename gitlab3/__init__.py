@@ -14,7 +14,11 @@ import re
 import requests
 from datetime import tzinfo, timedelta, datetime
 from math import ceil
-import urllib
+
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
 
 from . import exceptions
 from ._api_definition import GitLab as _GitLabAPIDefinition
@@ -431,7 +435,7 @@ class _GitLabAPI(object):
         #print "%s %s, data=%s" % (request_fn.__name__.upper(), url, str(data))
         try:
             if request_fn == requests.get or request_fn == requests.head:
-              url = url + '?' + urllib.urlencode(data,doseq=True)
+              url = url + '?' + urlencode(data,doseq=True)
               data=None
             r = request_fn(url, headers=self._headers, data=data,
                            **self._requests_kwargs)
