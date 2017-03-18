@@ -368,6 +368,8 @@ class _GitLabAPI(object):
                 self.utcoffset_val = timedelta(minutes=utcoffset)
             def utcoffset(self, dt):
                 return self.utcoffset_val
+            def dst(self):
+                return None
         sign = offset[0]
         hours = int(offset[1:3])
         minutes = int(offset[-2:])
