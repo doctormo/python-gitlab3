@@ -151,6 +151,8 @@ def _add_get_fn(api, name, parent):
     """Create a <PARENT_API>.get_<name>() function"""
     fixed_url = api._q_url.replace('merge_requests', 'merge_request')
     def fn(key=[], **kwargs):
+        if key and '/' in key:
+            key = key.replace('/', '%2F')
         if key != []:
             key = [key]
         data = parent._get(fixed_url, addl_keys=key, data=kwargs)
