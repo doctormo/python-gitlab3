@@ -136,20 +136,32 @@ class Note(APIDefinition):
 
 class Project(APIDefinition):
     url = '/projects/:id'
-    actions = [ _LIST, _GET, _ADD, _DELETE ]
+    actions = [_LIST, _GET, _ADD, _EDIT, _DELETE]
     required_params = [
         'name',
     ]
     optional_params = [
-        'namespace_id',
-        'description',
+        'path',
+        'namespace_id', # Create only
         'default_branch',
+        'description',
         'issues_enabled',
-        'wall_enabled',
         'merge_requests_enabled',
+        'builds_enabled',
         'wiki_enabled',
         'snippets_enabled',
+        'container_registry_enabled',
+        'shared_runners_enabled',
         'public',
+        'visibility_level',
+        'import_url',
+        'public_builds',
+        'only_allow_merge_if_build_succeeds',
+        'only_allow_merge_if_all_discussions_are_resolved',
+        'lfs_enabled',
+        'request_access_enabled',
+        'repository_storage',
+        'approvals_before_merge',
     ]
 
     ####
