@@ -348,7 +348,7 @@ class _GitLabAPI(object):
         offset = None
         if datetime_str.endswith('Z'):
             datetime_str = datetime_str[:-1]
-        else:
+        elif re.search(r'\+[0-9]{2}:[0-9]{2}$', datetime_str):
             offset = datetime_str[-6:]
             datetime_str = datetime_str[:-6]
         if re.search(r'\.[0-9]{3,6}$', datetime_str):
