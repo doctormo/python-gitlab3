@@ -357,17 +357,24 @@ class _GitLabAPI(object):
         if not offset:
             return dt
         class GitLabTzInfo(tzinfo):
-            def __init__(self, utcoffset):
+            def __init__(self, utcoffset=0, tzname=None):
+                super(GitLabTzInfo, self).__init__()
                 self.utcoffset_val = timedelta(minutes=utcoffset)
+                self._tzname = tzname
             def utcoffset(self, dt):
                 return self.utcoffset_val
+            def dst(self, dt):
+                # DST not in effect (fixed offset class)
+                return timedelta(0)
+            def tzname(self, dt):
+                return self._tzname
         sign = offset[0]
         hours = int(offset[1:3])
         minutes = int(offset[-2:])
-        offset = hours*60 + minutes
+        utcoffset = hours*60 + minutes
         if sign == '-':
-            offset = -offset
-        return dt.replace(tzinfo=GitLabTzInfo(offset))
+            utcoffset = -utcoffset
+        return dt.replace(tzinfo=GitLabTzInfo(utcoffset, tzname=str(offset)))
 
     def _get_url(self, api_url, addl_keys=[]):
         keys = self._get_keys(addl_keys)
