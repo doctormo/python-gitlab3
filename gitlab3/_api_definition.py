@@ -561,7 +561,15 @@ class GitLab(APIDefinition):
                 return ret
             return wrapped
 
-    extra_actions = [ AddProjectForUserAction, FindProjectsByNameAction ]
+    class SearchForUserAction(ExtraActionDefinition):
+        url = '/users?search=:q'
+        method = _HTTP_GET
+
+    extra_actions = [
+        AddProjectForUserAction,
+        FindProjectsByNameAction,
+        SearchForUserAction,
+    ]
 
     sub_apis = [
         CurrentUser,
