@@ -441,8 +441,9 @@ class _GitLabAPI(object):
         #print "%s %s, data=%s" % (request_fn.__name__.upper(), url, str(data))
         try:
             if request_fn == requests.get or request_fn == requests.head:
-              url = url + '?' + urlencode(data,doseq=True)
-              data=None
+                if data:
+                    url = url + '?' + urlencode(data,doseq=True)
+                data=None
             r = request_fn(url, headers=self._headers, data=data,
                            **self._requests_kwargs)
         except requests.exceptions.RequestException:
