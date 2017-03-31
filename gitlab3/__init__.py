@@ -108,7 +108,7 @@ def _find_matches(objects, kwargs, find_all):
     for obj in objects:
         match = True
         # Match all supplied parameters
-        for param, val in list(kwargs.items()):
+        for param, val in kwargs.items():
             if not getattr(obj, param) == val:
                 match = False
                 break
@@ -321,7 +321,7 @@ class _GitLabAPI(object):
             pass
         if self._convert_dates_enabled:
             self._convert_dates(json_data)
-        for key, val in list(json_data.items()):
+        for key, val in json_data.items():
             setattr(self, key, val)
         self._parent = parent
         self._data_keys = list(json_data.keys())
@@ -343,7 +343,7 @@ class _GitLabAPI(object):
             for item in data:
                 self._convert_dates(item)
             return
-        for key, val in list(data.items()):
+        for key, val in data.items():
             if type(val) == dict:
                 self._convert_dates(val)
             if self._date_fields.get(key) and val:
@@ -451,7 +451,7 @@ class _GitLabAPI(object):
             raise exceptions.ConnectionError(msg)
         self._check_status_code(r.status_code, url, data)
         try:
-            return json.loads(r.content.decode())
+            return json.loads(r.content.decode('utf8'))
         except ValueError:  # XXX: assume we're returning plain text
             return r.content
 
