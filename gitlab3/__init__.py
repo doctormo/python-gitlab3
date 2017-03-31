@@ -352,17 +352,19 @@ class _GitLabAPI(object):
     def _convert_gitlab_date(self, datetime_str):
         """Convert GitLab datetime string to datetime object"""
         fmt = '%Y-%m-%dT%H:%M:%S'
-        offset = None
+
         if datetime_str.endswith('Z'):
             datetime_str = datetime_str[:-1]
+            offset = '+00:00' # UTC
         elif re.search(r'\+[0-9]{2}:[0-9]{2}$', datetime_str):
             offset = datetime_str[-6:]
             datetime_str = datetime_str[:-6]
+
         if re.search(r'\.[0-9]{3,6}$', datetime_str):
             fmt += '.%f'  # microseconds are included
+
         dt = datetime.strptime(datetime_str, fmt)
-        if not offset:
-            return dt
+
         class GitLabTzInfo(tzinfo):
             def __init__(self, utcoffset=0, tzname=None):
                 super(GitLabTzInfo, self).__init__()
@@ -375,13 +377,10 @@ class _GitLabAPI(object):
                 return timedelta(0)
             def tzname(self, dt=None):
                 return self._tzname
-        sign = offset[0]
-        hours = int(offset[1:3])
+
+        hours = int(offset[:3])
         minutes = int(offset[-2:])
-        utcoffset = hours*60 + minutes
-        if sign == '-':
-            utcoffset = -utcoffset
-        return dt.replace(tzinfo=GitLabTzInfo(utcoffset, tzname=str(offset)))
+        return dt.replace(tzinfo=GitLabTzInfo(hours * 60 + minutes, offset))
 
     def _get_url(self, api_url, addl_keys=[]):
         keys = self._get_keys(addl_keys)
