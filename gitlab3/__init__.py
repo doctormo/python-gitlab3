@@ -355,28 +355,33 @@ class _GitLabAPI(object):
         offset = None
         if datetime_str.endswith('Z'):
             datetime_str = datetime_str[:-1]
-        else:
+        elif re.search(r'\+[0-9]{2}:[0-9]{2}$', datetime_str):
             offset = datetime_str[-6:]
             datetime_str = datetime_str[:-6]
-        if re.search(r'\.[0-9]{3}$', datetime_str):
+        if re.search(r'\.[0-9]{3,6}$', datetime_str):
             fmt += '.%f'  # microseconds are included
         dt = datetime.strptime(datetime_str, fmt)
         if not offset:
             return dt
         class GitLabTzInfo(tzinfo):
-            def __init__(self, utcoffset):
+            def __init__(self, utcoffset=0, tzname=None):
+                super(GitLabTzInfo, self).__init__()
                 self.utcoffset_val = timedelta(minutes=utcoffset)
+                self._tzname = tzname
             def utcoffset(self, dt):
                 return self.utcoffset_val
-            def dst(self):
-                return None
+            def dst(self, dt=None):
+                # DST not in effect (fixed offset class)
+                return timedelta(0)
+            def tzname(self, dt=None):
+                return self._tzname
         sign = offset[0]
         hours = int(offset[1:3])
         minutes = int(offset[-2:])
-        offset = hours*60 + minutes
+        utcoffset = hours*60 + minutes
         if sign == '-':
-            offset = -offset
-        return dt.replace(tzinfo=GitLabTzInfo(offset))
+            utcoffset = -utcoffset
+        return dt.replace(tzinfo=GitLabTzInfo(utcoffset, tzname=str(offset)))
 
     def _get_url(self, api_url, addl_keys=[]):
         keys = self._get_keys(addl_keys)
