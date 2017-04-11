@@ -359,11 +359,15 @@ class _GitLabAPI(object):
         elif re.search(r'\+[0-9]{2}:[0-9]{2}$', datetime_str):
             offset = datetime_str[-6:]
             datetime_str = datetime_str[:-6]
+        else:
+            offset = None
 
         if re.search(r'\.[0-9]{3,6}$', datetime_str):
             fmt += '.%f'  # microseconds are included
 
         dt = datetime.strptime(datetime_str, fmt)
+        if offset is None:
+            return dt
 
         class GitLabTzInfo(tzinfo):
             def __init__(self, utcoffset=0, tzname=None):
