@@ -82,32 +82,6 @@ class CurrentUser(APIDefinition):
     sub_apis = [ SSHKey ]
 
 
-class Group(APIDefinition):
-    url = '/groups/:id'
-    actions = [ _LIST, _GET, _ADD, _DELETE ]
-    required_params = [
-        'name',
-        'path',
-    ]
-
-    ####
-    # Extra Actions
-    class TransferProjectAction(ExtraActionDefinition):
-        """gl.Group.transfer_project(project_id)"""
-        url = '/projects/:project_id'
-        method = _HTTP_POST
-        url_params = [
-            'project_id',
-        ]
-    extra_actions = [ TransferProjectAction ]
-
-    ###
-    # Sub APIs
-    class Member(Member):  # Group API has limited Member actions...
-        actions = [ _LIST, _ADD, _DELETE ]
-    sub_apis = [ Member ]
-
-
 class SystemHook(APIDefinition):
     url = '/hooks/:id'
     actions = [ _LIST, _ADD, _DELETE ]
@@ -468,6 +442,51 @@ class Project(APIDefinition):
         WallNote,
     ]
 
+class Ldap(APIDefinition):
+    url = '/ldap_group_links/:cn'
+    key_name = 'cn'
+    action = [ _ADD, _DELETE ]
+    required_params = [
+        'cn',
+    ]
+    optional_params = [
+        'name',
+        'group_access',
+        'provider',
+    ]
+
+class Group(APIDefinition):
+    url = '/groups/:id'
+    actions = [ _LIST, _GET, _ADD, _DELETE ]
+    required_params = [
+        'name',
+        'path',
+    ]
+
+    ####
+    # Extra Actions
+    class TransferProjectAction(ExtraActionDefinition):
+        """gl.Group.transfer_project(project_id)"""
+        url = '/projects/:project_id'
+        method = _HTTP_POST
+        url_params = [
+            'project_id',
+        ]
+    extra_actions = [ TransferProjectAction ]
+
+    ###
+    # Sub APIs
+    class Member(Member):  # Group API has limited Member actions...
+        actions = [ _LIST, _ADD, _DELETE ]
+
+    class Project(Project):
+	#url = '/projects/'
+        actions = [ _LIST ]
+    
+    class Ldap(Ldap):
+        actions = [ _ADD, _DELETE ]
+
+    sub_apis = [ Member, Project, Ldap ]
 
 class User(APIDefinition):
     url = '/users/:id'
@@ -561,15 +580,7 @@ class GitLab(APIDefinition):
                 return ret
             return wrapped
 
-    class SearchForUserAction(ExtraActionDefinition):
-        url = '/users?search=:q'
-        method = _HTTP_GET
-
-    extra_actions = [
-        AddProjectForUserAction,
-        FindProjectsByNameAction,
-        SearchForUserAction,
-    ]
+    extra_actions = [ AddProjectForUserAction, FindProjectsByNameAction ]
 
     sub_apis = [
         CurrentUser,
