@@ -447,6 +447,7 @@ class _GitLabAPI(object):
             if request_fn in ['get', 'head']:
               url = url + '?' + urlencode(data,doseq=True)
               data=None
+            url = url[:-1] if url.endswith('?') else url
             r = _session.request(method=request_fn, url=url, headers=self._headers, data=data,
                            **self._requests_kwargs)
         except requests.exceptions.RequestException:
