@@ -45,21 +45,17 @@ def _query_list(api_cls, parent, data):
     last_objs = None
     while True:
         data['page'] = page
-        objs = parent._get(api_cls._uq_url, data=data)
-        # GitLab doesn't always return empty list at end, may repeat last...
-        if not objs or str(objs) == last_objs:
-            # Some listings start with page 0, others with 1...
-            # (in the latter case, page 0 will be the same as page 1
-            if page == 1:  # If page 0 == page 1, try page 2
-                page += 1
-                continue
-            break
+        objs, hdrs = parent._get(api_cls._uq_url, data=data, _headers=True)
         # "hash" the list as a string for comparison to prevent deep copy
         # (would be modified when converting date strings to datetime objects)
         last_objs = str(objs)
-        page += 1
         for obj in objs:
             yield api_cls(parent, obj)
+        # GitLab doesn't always return empty list at end, may repeat last...
+        try:
+            page = int(hdrs['x-next-page'])
+        except:
+            break
 
 
 def _add_list_fn(api, api_definition, parent):
@@ -305,6 +301,7 @@ def _add_api(definition, parent):
     setattr(parent, cls_name, cls)
     return cls
 
+_session = None
 
 class _GitLabAPI(object):
     """Base API template"""
@@ -352,39 +349,38 @@ class _GitLabAPI(object):
     def _convert_gitlab_date(self, datetime_str):
         """Convert GitLab datetime string to datetime object"""
         fmt = '%Y-%m-%dT%H:%M:%S'
+        offset = None
+        if ':' in datetime_str:
+             if datetime_str.endswith('Z'):
+                 datetime_str = datetime_str[:-1]
+                 offset = '+00:00' # UTC
+             elif re.search(r'\+[0-9]{2}:[0-9]{2}$', datetime_str):
+                 offset = datetime_str[-6:]
+                 datetime_str = datetime_str[:-6]
+             else:
+                 offset = None
 
-        if datetime_str.endswith('Z'):
-            datetime_str = datetime_str[:-1]
-            offset = '+00:00' # UTC
-        elif re.search(r'\+[0-9]{2}:[0-9]{2}$', datetime_str):
-            offset = datetime_str[-6:]
-            datetime_str = datetime_str[:-6]
+             if re.search(r'\.[0-9]{3,6}$', datetime_str):
+                 fmt += '.%f'  # microseconds are included
         else:
-            offset = None
-
-        if re.search(r'\.[0-9]{3,6}$', datetime_str):
-            fmt += '.%f'  # microseconds are included
-
+             fmt = '%Y-%m-%d'
         dt = datetime.strptime(datetime_str, fmt)
-        if offset is None:
+        if not offset:
             return dt
-
         class GitLabTzInfo(tzinfo):
-            def __init__(self, utcoffset=0, tzname=None):
-                super(GitLabTzInfo, self).__init__()
+            def __init__(self, utcoffset):
                 self.utcoffset_val = timedelta(minutes=utcoffset)
-                self._tzname = tzname
             def utcoffset(self, dt):
                 return self.utcoffset_val
-            def dst(self, dt=None):
-                # DST not in effect (fixed offset class)
-                return timedelta(0)
-            def tzname(self, dt=None):
-                return self._tzname
-
-        hours = int(offset[:3])
+            def dst(self):
+                return None
+        sign = offset[0]
+        hours = int(offset[1:3])
         minutes = int(offset[-2:])
-        return dt.replace(tzinfo=GitLabTzInfo(hours * 60 + minutes, offset))
+        offset = hours*60 + minutes
+        if sign == '-':
+            offset = -offset
+        return dt.replace(tzinfo=GitLabTzInfo(offset))
 
     def _get_url(self, api_url, addl_keys=[]):
         keys = self._get_keys(addl_keys)
@@ -419,6 +415,7 @@ class _GitLabAPI(object):
         404: exceptions.ResourceNotFound,
         405: exceptions.RequestNotSupported,
         409: exceptions.ResourceConflict,
+        422: exceptions.Unprocessable,
         500: exceptions.ServerError,
     }
     def _check_status_code(self, status_code, url, data):
@@ -427,37 +424,46 @@ class _GitLabAPI(object):
         msg = "URL: %s, Data: %s" % (url, data)
         raise self._code_to_exc[status_code](msg)
 
-    def _get(self, api_url, addl_keys=[], data=None):
+    def _get(self, api_url, addl_keys=[], data=None, _headers=False):
         """get or list"""
-        return self._request(requests.get, api_url, addl_keys, data)
+        return self._request('get', api_url, addl_keys, data, _headers=_headers)
 
     def _post(self, api_url, addl_keys=[], data=None):
-        return self._request(requests.post, api_url, addl_keys, data)
+        return self._request('post', api_url, addl_keys, data)
 
     def _put(self, api_url, addl_keys=[], data=None):
-        return self._request(requests.put, api_url, addl_keys, data)
+        return self._request('put', api_url, addl_keys, data)
 
     def _delete(self, api_url, addl_keys=[], data=None):
-        return self._request(requests.delete, api_url, addl_keys, data)
+        return self._request('delete', api_url, addl_keys, data)
 
-    def _request(self, request_fn, api_url, addl_keys, data):
+    def _request(self, request_fn, api_url, addl_keys, data, _headers=False):
+        global _session
         url = self._get_url(api_url, addl_keys)
         #print "%s %s, data=%s" % (request_fn.__name__.upper(), url, str(data))
         try:
-            if request_fn == requests.get or request_fn == requests.head:
-                if data:
-                    url = url + '?' + urlencode(data,doseq=True)
-                data=None
-            r = request_fn(url, headers=self._headers, data=data,
+            if _session is None:
+                _session = requests.Session()
+            if request_fn in ['get', 'head']:
+              url = url + '?' + urlencode(data,doseq=True)
+              data=None
+            url = url[:-1] if url.endswith('?') else url
+            r = _session.request(method=request_fn, url=url, headers=self._headers, data=data,
                            **self._requests_kwargs)
         except requests.exceptions.RequestException:
             msg = "'%s' request to '%s' failed" % (request_fn.__name__, url)
             raise exceptions.ConnectionError(msg)
         self._check_status_code(r.status_code, url, data)
         try:
-            return json.loads(r.content.decode('utf8'))
+            if _headers:
+                return json.loads(r.content.decode('utf-8')), r.headers
+            else:
+                return json.loads(r.content.decode('utf-8'))
         except ValueError:  # XXX: assume we're returning plain text
-            return r.content
+            if _headers:
+                return r.content, None
+            else:
+                return r.content
 
     def __repr__(self):
         """__repr__ function for new API class"""

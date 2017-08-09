@@ -30,6 +30,9 @@ class ResourceConflict(GitLabException):  # 409 Conflict
 class ServerError(GitLabException):  # 500 Server Error
     """While handling the request something went wrong on the server side"""
 
+class Unprocessable(GitLabException):  # 422 Unprocessable
+    pass
+
 class ConnectionError(GitLabException):
     """A connection to GitLab could not be established due to a
        network problem, e.g. DNS failure, network is down, etc.
