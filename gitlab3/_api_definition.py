@@ -155,6 +155,57 @@ class Project(APIDefinition):
         required_params = [
             'filepath',
         ]
+    class CreateFileAction(ExtraActionDefinition):
+        """gl.Project.create_file()"""
+        url = '/repository/files'
+        method = _HTTP_POST
+        required_params = [
+            'file_path',
+            'branch_name',
+            'content',
+            'commit_message',
+        ]
+        optional_params = [
+            'encoding',
+            'author_email',
+            'author_name'
+        ]
+    class GetFileAction(ExtraActionDefinition):
+        """gl.Project.get_file()"""
+        url = '/repository/files'
+        method = _HTTP_GET
+        required_params = [
+            'file_path',
+            'ref'
+        ]
+    class UpdateFileAction(ExtraActionDefinition):
+        """gl.Project.update_file()"""
+        url = '/repository/files'
+        method = _HTTP_PUT
+        required_params = [
+            'file_path',
+            'branch_name',
+            'content',
+            'commit_message',
+        ]
+        optional_params = [
+            'encoding',
+            'author_email',
+            'author_name'
+        ]
+    class DeleteFileAction(ExtraActionDefinition):
+        """gl.Project.delete_file()"""
+        url = '/repository/files'
+        method = _HTTP_DELETE
+        required_params = [
+            'file_path',
+            'branch_name',
+            'commit_message',
+        ]
+        optional_params = [
+            'author_email',
+            'author_name'
+        ]
     class GetCommentsAction(ExtraActionDefinition):
         """gl.Project.get_comments"""
         url = '/repository/commits/:sha_or_ref_name/comments'
@@ -227,6 +278,10 @@ class Project(APIDefinition):
         ForkFromAction,
         DeleteForkAction,
         GetBlobAction,
+        CreateFileAction,
+        GetFileAction,
+        UpdateFileAction,
+        DeleteFileAction,
         GetCommentsAction,
         ProtectBranchAction,
         UnprotectBranchAction,
