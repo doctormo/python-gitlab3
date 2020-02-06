@@ -415,6 +415,7 @@ class _GitLabAPI(object):
         404: exceptions.ResourceNotFound,
         405: exceptions.RequestNotSupported,
         409: exceptions.ResourceConflict,
+        410: exceptions.Gone,
         422: exceptions.Unprocessable,
         500: exceptions.ServerError,
     }

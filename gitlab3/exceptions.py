@@ -1,3 +1,6 @@
+class Gone(Exception):
+    """GitLab API v3 is no longer available"""
+
 class GitLabException(Exception):
     """Base exception class"""
 
